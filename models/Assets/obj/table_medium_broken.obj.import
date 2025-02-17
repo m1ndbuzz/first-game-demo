@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://0osjo6py26gs"
+path="res://.godot/imported/table_medium_broken.obj-72dc1b9bb14998cab0551a3c5767f496.mesh"
+
+[deps]
+
+files=["res://.godot/imported/table_medium_broken.obj-72dc1b9bb14998cab0551a3c5767f496.mesh"]
+
+source_file="res://models/Assets/obj/table_medium_broken.obj"
+dest_files=["res://.godot/imported/table_medium_broken.obj-72dc1b9bb14998cab0551a3c5767f496.mesh", "res://.godot/imported/table_medium_broken.obj-72dc1b9bb14998cab0551a3c5767f496.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

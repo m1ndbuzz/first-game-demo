@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dbu2pqiwnrxan"
+path="res://.godot/imported/keg.obj-e52a683cd7d02f3a22cb611dd91b76ff.mesh"
+
+[deps]
+
+files=["res://.godot/imported/keg.obj-e52a683cd7d02f3a22cb611dd91b76ff.mesh"]
+
+source_file="res://models/Assets/obj/keg.obj"
+dest_files=["res://.godot/imported/keg.obj-e52a683cd7d02f3a22cb611dd91b76ff.mesh", "res://.godot/imported/keg.obj-e52a683cd7d02f3a22cb611dd91b76ff.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

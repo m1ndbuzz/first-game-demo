@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://d20qv6ake5dwf"
+path="res://.godot/imported/banner_triple_white.obj-8588d314cd28722619aa833ca28f14e3.mesh"
+
+[deps]
+
+files=["res://.godot/imported/banner_triple_white.obj-8588d314cd28722619aa833ca28f14e3.mesh"]
+
+source_file="res://models/Assets/obj/banner_triple_white.obj"
+dest_files=["res://.godot/imported/banner_triple_white.obj-8588d314cd28722619aa833ca28f14e3.mesh", "res://.godot/imported/banner_triple_white.obj-8588d314cd28722619aa833ca28f14e3.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
