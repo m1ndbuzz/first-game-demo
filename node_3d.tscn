@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bxy7l017dhljx"]
 
-[ext_resource type="PackedScene" uid="uid://gk4p5bvmw3fj" path="res://models/Assets/gltf/stairs_walled.gltf" id="1_tahkf"]
+[ext_resource type="PackedScene" uid="uid://bgb3ejsotxjsh" path="res://scenes/stairs.tscn" id="1_kggio"]
 [ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://addons/proto_controller/proto_controller.tscn" id="2_uc6fj"]
 
 [node name="main" type="Node3D"]
@@ -45,11 +45,18 @@ size = Vector3(0.5, 4, 30)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.75, 2, 0)
 size = Vector3(0.5, 4, 30)
 
-[node name="enterance" parent="." instance=ExtResource("1_tahkf")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -49.7, -0.1, 0)
+[node name="enterance2" parent="." instance=ExtResource("1_kggio")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -49.5, -0.1, 0)
 
-[node name="exit" parent="." instance=ExtResource("1_tahkf")]
-transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 45.4, -4, 0)
+[node name="exit2" parent="." instance=ExtResource("1_kggio")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 45.5, -4, 0)
 
 [node name="ProtoController" parent="." instance=ExtResource("2_uc6fj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.2, 0, 0)
+can_sprint = true
+sprint_speed = 20.0
+input_left = "move_left"
+input_right = "move_right"
+input_forward = "move_forward"
+input_back = "move_back"
+input_jump = "jump"
