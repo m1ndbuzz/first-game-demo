@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bxy7l017dhljx"]
+[gd_scene load_steps=10 format=3 uid="uid://bxy7l017dhljx"]
 
 [ext_resource type="PackedScene" uid="uid://bgb3ejsotxjsh" path="res://scenes/stairs.tscn" id="1_kggio"]
 [ext_resource type="PackedScene" uid="uid://brutgdnum3aov" path="res://scenes/floor_dirt_small.tscn" id="1_nkwgo"]
@@ -7,6 +7,13 @@
 [ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://addons/proto_controller/proto_controller.tscn" id="2_uc6fj"]
 [ext_resource type="PackedScene" uid="uid://cek0rrdybgwqk" path="res://scenes/floor_dirt_large.tscn" id="2_xiya6"]
 [ext_resource type="PackedScene" uid="uid://bg6stt5t50c8h" path="res://scenes/torch_mounted_lit.tscn" id="5_j8xl6"]
+[ext_resource type="PackedScene" uid="uid://bfpa2tjrjk6of" path="res://scenes/exit_wall.tscn" id="8_w4yom"]
+
+[sub_resource type="Environment" id="Environment_ugn4h"]
+glow_enabled = true
+glow_intensity = 1.0
+glow_strength = 1.6
+glow_blend_mode = 0
 
 [node name="main" type="Node3D"]
 
@@ -1008,28 +1015,6 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5,
 [node name="FloorDirtLarge13" parent="Floor/right13" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, -4.5)
 
-[node name="GrayboxFloor" type="CSGCombiner3D" parent="."]
-visible = false
-use_collision = true
-metadata/_edit_lock_ = true
-
-[node name="floor" type="CSGBox3D" parent="GrayboxFloor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
-use_collision = true
-size = Vector3(100, 0.1, 30)
-metadata/_edit_lock_ = true
-
-[node name="hole" type="CSGBox3D" parent="GrayboxFloor/floor"]
-transform = Transform3D(0.8316, 0, 0, 0, 1, 0, 0, 0, 1, 47.5, 0, 0)
-operation = 2
-size = Vector3(5, 1, 5)
-metadata/_edit_lock_ = true
-
-[node name="CSGBox3D" type="CSGBox3D" parent="GrayboxFloor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, -2, 0)
-size = Vector3(1, 4, 5)
-metadata/_edit_lock_ = true
-
 [node name="Walls" type="Node3D" parent="."]
 
 [node name="SouthWall" type="Node3D" parent="Walls"]
@@ -1240,11 +1225,8 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -50, -
 [node name="wall_corner2" parent="Walls/NorthWall" instance=ExtResource("2_e1prw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50, -0.1, -15)
 
-[node name="exit" parent="." instance=ExtResource("1_kggio")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 45.5, -4, 0)
-
 [node name="ProtoController" parent="." instance=ExtResource("2_uc6fj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.2, 0, 0)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -42.6, 0, 0)
 can_sprint = true
 sprint_speed = 20.0
 input_left = "move_left"
@@ -1264,3 +1246,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0)
 
 [node name="TorchMountedLit2" parent="Enternace" instance=ExtResource("5_j8xl6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -0.3, 0)
+
+[node name="Exit" type="Node3D" parent="."]
+
+[node name="exit" parent="Exit" instance=ExtResource("1_kggio")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 45.5, -4, 0)
+
+[node name="ExitWall" parent="Exit" instance=ExtResource("8_w4yom")]
+transform = Transform3D(3.9, 0, 0, 0, 3.9, 0, 0, 0, 3.9, 49.7, -2, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ugn4h")
