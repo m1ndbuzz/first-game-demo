@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bs72ogkvdd7d6"]
 
-[ext_resource type="Script" path="res://addons/proto_controller/proto_controller.gd" id="1_ucva2"]
+[ext_resource type="Script" uid="uid://vr55epy4hm2t" path="res://addons/proto_controller/proto_controller.gd" id="1_ucva2"]
 [ext_resource type="PackedScene" uid="uid://dyvr6w33b33aj" path="res://models/Characters/gltf/Knight.glb" id="2_sdm0s"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_iof21"]
