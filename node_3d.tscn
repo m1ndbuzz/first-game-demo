@@ -4,9 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://brutgdnum3aov" path="res://scenes/floor_dirt_small.tscn" id="1_nkwgo"]
 [ext_resource type="PackedScene" uid="uid://d36oftrp4v8l2" path="res://scenes/wall.tscn" id="1_uky3b"]
 [ext_resource type="PackedScene" uid="uid://b7ismkth3igrf" path="res://scenes/wall_corner.tscn" id="2_e1prw"]
-[ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://addons/proto_controller/proto_controller.tscn" id="2_uc6fj"]
 [ext_resource type="PackedScene" uid="uid://cek0rrdybgwqk" path="res://scenes/floor_dirt_large.tscn" id="2_xiya6"]
 [ext_resource type="PackedScene" uid="uid://bg6stt5t50c8h" path="res://scenes/torch_mounted_lit.tscn" id="5_j8xl6"]
+[ext_resource type="PackedScene" uid="uid://dyueppnsn2ao7" path="res://scenes/knight.tscn" id="8_jsk3o"]
 [ext_resource type="PackedScene" uid="uid://bfpa2tjrjk6of" path="res://scenes/exit_wall.tscn" id="8_w4yom"]
 
 [sub_resource type="Environment" id="Environment_ugn4h"]
@@ -1225,16 +1225,6 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -50, -
 [node name="wall_corner2" parent="Walls/NorthWall" instance=ExtResource("2_e1prw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50, -0.1, -15)
 
-[node name="ProtoController" parent="." instance=ExtResource("2_uc6fj")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -42.6, 0, 0)
-can_sprint = true
-sprint_speed = 20.0
-input_left = "move_left"
-input_right = "move_right"
-input_forward = "move_forward"
-input_back = "move_back"
-input_jump = "jump"
-
 [node name="Enternace" type="Node3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -45.5, 2.2, 2)
 
@@ -1257,3 +1247,6 @@ transform = Transform3D(3.9, 0, 0, 0, 3.9, 0, 0, 0, 3.9, 49.7, -2, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ugn4h")
+
+[node name="Knight" parent="." instance=ExtResource("8_jsk3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39, 0, 0)
