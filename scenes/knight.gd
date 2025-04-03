@@ -6,6 +6,7 @@ class_name Knight
 @export var jump_speed = 7.0
 @export var rotation_speed = 20.0
 @export var mouse_sensitivity = 0.0025
+@export var controller_sensitivity = 4
 
 @export var dash_distance = 7.0  # Distance to travel (in units)
 @export var dash_duration = 0.2  # How long the dash lasts (seconds)
@@ -27,6 +28,18 @@ var dash_direction = Vector3.ZERO  # Store the forward direction at dash start
 
 func _physics_process(delta: float) -> void:
 	velocity.y += -gravity * delta
+	
+	# Controller camera rotation
+	var look_h = Input.get_axis("look_horizontal_negative", "look_horizontal_positive")  # Left/Right
+	var look_v = Input.get_axis("look_vertical_negative", "look_vertical_positive")    # Up/Down
+	if abs(look_h) > 0.1 or abs(look_v) > 0.1:  # Deadzone
+		print("Look H: ", look_h)
+		print("Look V: ",look_v)
+		spring_arm.rotation.y -= look_h * controller_sensitivity * delta
+		spring_arm.rotation.x -= look_v * controller_sensitivity * delta
+		spring_arm.rotation_degrees.x = clamp(spring_arm.rotation_degrees.x, -90.0, 30.0)
+		
+		
 		
 	get_move_input(delta)
 	
@@ -51,6 +64,7 @@ func _physics_process(delta: float) -> void:
 		jumping = true
 		anim_tree.set("parameters/conditions/jumping", true)
 		anim_tree.set("parameters/conditions/grounded", false)
+		print("Jump pressed!")  # Debug
 	if is_on_floor() and not last_floor:
 		jumping = false
 		anim_tree.set("parameters/conditions/jumping", false)
@@ -77,6 +91,7 @@ func get_move_input(delta: float) -> void:
 		dash_direction.y = 0  # Ensure no vertical movement
 		dash_direction = dash_direction.normalized()
 		anim_state.travel("Dash")
+		print("Dash pressed!")  # Debug
 		
 	#if not dashing:
 	var input = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
@@ -105,8 +120,12 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		spring_arm.rotation.x -= event.relative.y * mouse_sensitivity
 		spring_arm.rotation_degrees.x = clamp(spring_arm.rotation_degrees.x, -90.0, 30.0)
-		spring_arm.rotation.y -= event.relative.x * mouse_sensitivity
+		spring_arm.rotation.y -= event.relative.x * mouse_sensitivity		
 	if event.is_action_pressed("interact"):
 		anim_state.travel("Interact")
 	if event.is_action_pressed("emote"):
 		anim_state.travel("Cheer")
+		
+	# Debug raw controller input
+	if event is InputEventJoypadButton:
+		print("Controller button pressed: ", event.button_index, " Action: ", event.is_pressed())
