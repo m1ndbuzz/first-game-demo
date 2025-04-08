@@ -1,10 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://bxy7l017dhljx"]
+[gd_scene load_steps=13 format=3 uid="uid://bxy7l017dhljx"]
 
+[ext_resource type="Script" uid="uid://85xuaf65kgst" path="res://main.gd" id="1_6iypd"]
 [ext_resource type="PackedScene" uid="uid://bgb3ejsotxjsh" path="res://scenes/stairs.tscn" id="1_kggio"]
 [ext_resource type="PackedScene" uid="uid://brutgdnum3aov" path="res://scenes/floor_dirt_small.tscn" id="1_nkwgo"]
 [ext_resource type="PackedScene" uid="uid://d36oftrp4v8l2" path="res://scenes/wall.tscn" id="1_uky3b"]
 [ext_resource type="PackedScene" uid="uid://b7ismkth3igrf" path="res://scenes/wall_corner.tscn" id="2_e1prw"]
 [ext_resource type="PackedScene" uid="uid://cek0rrdybgwqk" path="res://scenes/floor_dirt_large.tscn" id="2_xiya6"]
+[ext_resource type="PackedScene" uid="uid://d18qrt8iwyore" path="res://scenes/jump_wall.tscn" id="5_4arys"]
 [ext_resource type="PackedScene" uid="uid://bg6stt5t50c8h" path="res://scenes/torch_mounted_lit.tscn" id="5_j8xl6"]
 [ext_resource type="PackedScene" uid="uid://dyueppnsn2ao7" path="res://scenes/knight.tscn" id="8_jsk3o"]
 [ext_resource type="PackedScene" uid="uid://bfpa2tjrjk6of" path="res://scenes/exit_wall.tscn" id="8_w4yom"]
@@ -15,7 +17,11 @@ glow_intensity = 1.0
 glow_strength = 1.6
 glow_blend_mode = 0
 
+[sub_resource type="Theme" id="Theme_6iypd"]
+default_font_size = 22
+
 [node name="main" type="Node3D"]
+script = ExtResource("1_6iypd")
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.0871558, -0.936117, 0.340718, 0, 0.34202, 0.939693, -0.996195, 0.0818996, -0.029809, 0, 50.6, 0)
@@ -27,995 +33,1407 @@ shadow_enabled = true
 
 [node name="FloorDirtSmall" parent="Floor/middle2" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.5, 0, 1.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall2" parent="Floor/middle2" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.5, 0, 1.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall3" parent="Floor/middle2" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.5, 0, -0.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall4" parent="Floor/middle2" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.5, 0, -2.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall5" parent="Floor/middle2" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.5, 0, -0.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall6" parent="Floor/middle2" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.5, 0, -2.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall7" parent="Floor/middle2" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.5, 0, 1.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall8" parent="Floor/middle2" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.5, 0, 1.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall9" parent="Floor/middle2" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.5, 0, -0.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall10" parent="Floor/middle2" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.5, 0, -2.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall11" parent="Floor/middle2" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.5, 0, -0.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall12" parent="Floor/middle2" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.5, 0, -2.5)
+metadata/_edit_lock_ = true
 
 [node name="middle" type="Node3D" parent="Floor"]
 
 [node name="FloorDirtSmall" parent="Floor/middle" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.5, 0, 1.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall2" parent="Floor/middle" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.5, 0, 1.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall3" parent="Floor/middle" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.5, 0, -0.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall4" parent="Floor/middle" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.5, 0, -2.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall5" parent="Floor/middle" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.5, 0, -0.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall6" parent="Floor/middle" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.5, 0, -2.5)
+metadata/_edit_lock_ = true
 
 [node name="left" type="Node3D" parent="Floor"]
 
 [node name="FloorDirtLarge" parent="Floor/left" instance=ExtResource("2_xiya6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.5, 0, 4.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge2" parent="Floor/left" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -47.5, 0, 8.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge3" parent="Floor/left" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -47.5, 0, 12.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge4" parent="Floor/left" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, 4.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge5" parent="Floor/left" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, 8.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge6" parent="Floor/left" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, 12.5)
+metadata/_edit_lock_ = true
 
 [node name="right" type="Node3D" parent="Floor"]
 
 [node name="FloorDirtLarge8" parent="Floor/right" instance=ExtResource("2_xiya6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.5, 0, -12.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge9" parent="Floor/right" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -47.5, 0, -8.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge10" parent="Floor/right" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -47.5, 0, -4.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge11" parent="Floor/right" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, -12.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge12" parent="Floor/right" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, -8.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge13" parent="Floor/right" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, -4.5)
+metadata/_edit_lock_ = true
 
 [node name="left2" type="Node3D" parent="Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
 
 [node name="FloorDirtLarge" parent="Floor/left2" instance=ExtResource("2_xiya6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.5, 0, 4.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge2" parent="Floor/left2" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -47.5, 0, 8.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge3" parent="Floor/left2" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -47.5, 0, 12.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge4" parent="Floor/left2" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, 4.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge5" parent="Floor/left2" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, 8.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge6" parent="Floor/left2" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, 12.5)
+metadata/_edit_lock_ = true
 
 [node name="right2" type="Node3D" parent="Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
 
 [node name="FloorDirtLarge8" parent="Floor/right2" instance=ExtResource("2_xiya6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.5, 0, -12.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge9" parent="Floor/right2" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -47.5, 0, -8.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge10" parent="Floor/right2" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -47.5, 0, -4.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge11" parent="Floor/right2" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, -12.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge12" parent="Floor/right2" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, -8.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge13" parent="Floor/right2" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, -4.5)
+metadata/_edit_lock_ = true
 
 [node name="middle3" type="Node3D" parent="Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
 
 [node name="FloorDirtSmall" parent="Floor/middle3" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.5, 0, 1.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall2" parent="Floor/middle3" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.5, 0, 1.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall3" parent="Floor/middle3" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.5, 0, -0.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall4" parent="Floor/middle3" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.5, 0, -2.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall5" parent="Floor/middle3" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.5, 0, -0.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall6" parent="Floor/middle3" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.5, 0, -2.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall7" parent="Floor/middle3" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.5, 0, 1.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall8" parent="Floor/middle3" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.5, 0, 1.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall9" parent="Floor/middle3" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.5, 0, -0.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall10" parent="Floor/middle3" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.5, 0, -2.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall11" parent="Floor/middle3" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.5, 0, -0.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall12" parent="Floor/middle3" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.5, 0, -2.5)
+metadata/_edit_lock_ = true
 
 [node name="left3" type="Node3D" parent="Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 0)
 
 [node name="FloorDirtLarge" parent="Floor/left3" instance=ExtResource("2_xiya6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.5, 0, 4.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge2" parent="Floor/left3" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -47.5, 0, 8.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge3" parent="Floor/left3" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -47.5, 0, 12.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge4" parent="Floor/left3" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, 4.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge5" parent="Floor/left3" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, 8.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge6" parent="Floor/left3" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, 12.5)
+metadata/_edit_lock_ = true
 
 [node name="right3" type="Node3D" parent="Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 0)
 
 [node name="FloorDirtLarge8" parent="Floor/right3" instance=ExtResource("2_xiya6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.5, 0, -12.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge9" parent="Floor/right3" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -47.5, 0, -8.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge10" parent="Floor/right3" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -47.5, 0, -4.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge11" parent="Floor/right3" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, -12.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge12" parent="Floor/right3" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, -8.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge13" parent="Floor/right3" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, -4.5)
+metadata/_edit_lock_ = true
 
 [node name="middle4" type="Node3D" parent="Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 0)
 
 [node name="FloorDirtSmall" parent="Floor/middle4" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.5, 0, 1.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall2" parent="Floor/middle4" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.5, 0, 1.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall3" parent="Floor/middle4" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.5, 0, -0.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall4" parent="Floor/middle4" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.5, 0, -2.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall5" parent="Floor/middle4" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.5, 0, -0.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall6" parent="Floor/middle4" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.5, 0, -2.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall7" parent="Floor/middle4" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.5, 0, 1.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall8" parent="Floor/middle4" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.5, 0, 1.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall9" parent="Floor/middle4" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.5, 0, -0.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall10" parent="Floor/middle4" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.5, 0, -2.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall11" parent="Floor/middle4" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.5, 0, -0.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall12" parent="Floor/middle4" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.5, 0, -2.5)
+metadata/_edit_lock_ = true
 
 [node name="left4" type="Node3D" parent="Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 0)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge" parent="Floor/left4" instance=ExtResource("2_xiya6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.5, 0, 4.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge2" parent="Floor/left4" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -47.5, 0, 8.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge3" parent="Floor/left4" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -47.5, 0, 12.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge4" parent="Floor/left4" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, 4.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge5" parent="Floor/left4" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, 8.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge6" parent="Floor/left4" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, 12.5)
+metadata/_edit_lock_ = true
 
 [node name="right4" type="Node3D" parent="Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 0)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge8" parent="Floor/right4" instance=ExtResource("2_xiya6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.5, 0, -12.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge9" parent="Floor/right4" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -47.5, 0, -8.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge10" parent="Floor/right4" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -47.5, 0, -4.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge11" parent="Floor/right4" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, -12.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge12" parent="Floor/right4" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, -8.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge13" parent="Floor/right4" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, -4.5)
+metadata/_edit_lock_ = true
 
 [node name="middle5" type="Node3D" parent="Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 0)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall" parent="Floor/middle5" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.5, 0, 1.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall2" parent="Floor/middle5" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.5, 0, 1.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall3" parent="Floor/middle5" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.5, 0, -0.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall4" parent="Floor/middle5" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.5, 0, -2.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall5" parent="Floor/middle5" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.5, 0, -0.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall6" parent="Floor/middle5" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.5, 0, -2.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall7" parent="Floor/middle5" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.5, 0, 1.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall8" parent="Floor/middle5" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.5, 0, 1.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall9" parent="Floor/middle5" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.5, 0, -0.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall10" parent="Floor/middle5" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.5, 0, -2.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall11" parent="Floor/middle5" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.5, 0, -0.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall12" parent="Floor/middle5" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.5, 0, -2.5)
+metadata/_edit_lock_ = true
 
 [node name="left5" type="Node3D" parent="Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 0, 0)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge" parent="Floor/left5" instance=ExtResource("2_xiya6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.5, 0, 4.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge2" parent="Floor/left5" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -47.5, 0, 8.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge3" parent="Floor/left5" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -47.5, 0, 12.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge4" parent="Floor/left5" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, 4.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge5" parent="Floor/left5" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, 8.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge6" parent="Floor/left5" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, 12.5)
+metadata/_edit_lock_ = true
 
 [node name="right5" type="Node3D" parent="Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 0, 0)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge8" parent="Floor/right5" instance=ExtResource("2_xiya6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.5, 0, -12.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge9" parent="Floor/right5" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -47.5, 0, -8.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge10" parent="Floor/right5" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -47.5, 0, -4.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge11" parent="Floor/right5" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, -12.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge12" parent="Floor/right5" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, -8.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge13" parent="Floor/right5" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, -4.5)
+metadata/_edit_lock_ = true
 
 [node name="middle6" type="Node3D" parent="Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 0, 0)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall" parent="Floor/middle6" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.5, 0, 1.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall2" parent="Floor/middle6" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.5, 0, 1.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall3" parent="Floor/middle6" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.5, 0, -0.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall4" parent="Floor/middle6" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.5, 0, -2.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall5" parent="Floor/middle6" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.5, 0, -0.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall6" parent="Floor/middle6" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.5, 0, -2.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall7" parent="Floor/middle6" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.5, 0, 1.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall8" parent="Floor/middle6" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.5, 0, 1.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall9" parent="Floor/middle6" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.5, 0, -0.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall10" parent="Floor/middle6" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.5, 0, -2.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall11" parent="Floor/middle6" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.5, 0, -0.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall12" parent="Floor/middle6" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.5, 0, -2.5)
+metadata/_edit_lock_ = true
 
 [node name="left6" type="Node3D" parent="Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0, 0)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge" parent="Floor/left6" instance=ExtResource("2_xiya6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.5, 0, 4.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge2" parent="Floor/left6" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -47.5, 0, 8.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge3" parent="Floor/left6" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -47.5, 0, 12.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge4" parent="Floor/left6" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, 4.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge5" parent="Floor/left6" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, 8.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge6" parent="Floor/left6" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, 12.5)
+metadata/_edit_lock_ = true
 
 [node name="right6" type="Node3D" parent="Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0, 0)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge8" parent="Floor/right6" instance=ExtResource("2_xiya6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.5, 0, -12.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge9" parent="Floor/right6" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -47.5, 0, -8.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge10" parent="Floor/right6" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -47.5, 0, -4.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge11" parent="Floor/right6" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, -12.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge12" parent="Floor/right6" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, -8.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge13" parent="Floor/right6" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, -4.5)
+metadata/_edit_lock_ = true
 
 [node name="middle7" type="Node3D" parent="Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0, 0)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall" parent="Floor/middle7" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.5, 0, 1.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall2" parent="Floor/middle7" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.5, 0, 1.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall3" parent="Floor/middle7" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.5, 0, -0.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall4" parent="Floor/middle7" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.5, 0, -2.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall5" parent="Floor/middle7" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.5, 0, -0.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall6" parent="Floor/middle7" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.5, 0, -2.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall7" parent="Floor/middle7" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.5, 0, 1.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall8" parent="Floor/middle7" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.5, 0, 1.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall9" parent="Floor/middle7" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.5, 0, -0.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall10" parent="Floor/middle7" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.5, 0, -2.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall11" parent="Floor/middle7" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.5, 0, -0.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall12" parent="Floor/middle7" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.5, 0, -2.5)
+metadata/_edit_lock_ = true
 
 [node name="left7" type="Node3D" parent="Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48, 0, 0)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge" parent="Floor/left7" instance=ExtResource("2_xiya6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.5, 0, 4.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge2" parent="Floor/left7" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -47.5, 0, 8.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge3" parent="Floor/left7" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -47.5, 0, 12.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge4" parent="Floor/left7" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, 4.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge5" parent="Floor/left7" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, 8.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge6" parent="Floor/left7" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, 12.5)
+metadata/_edit_lock_ = true
 
 [node name="right7" type="Node3D" parent="Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48, 0, 0)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge8" parent="Floor/right7" instance=ExtResource("2_xiya6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.5, 0, -12.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge9" parent="Floor/right7" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -47.5, 0, -8.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge10" parent="Floor/right7" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -47.5, 0, -4.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge11" parent="Floor/right7" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, -12.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge12" parent="Floor/right7" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, -8.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge13" parent="Floor/right7" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, -4.5)
+metadata/_edit_lock_ = true
 
 [node name="middle8" type="Node3D" parent="Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48, 0, 0)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall" parent="Floor/middle8" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.5, 0, 1.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall2" parent="Floor/middle8" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.5, 0, 1.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall3" parent="Floor/middle8" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.5, 0, -0.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall4" parent="Floor/middle8" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.5, 0, -2.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall5" parent="Floor/middle8" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.5, 0, -0.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall6" parent="Floor/middle8" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.5, 0, -2.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall7" parent="Floor/middle8" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.5, 0, 1.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall8" parent="Floor/middle8" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.5, 0, 1.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall9" parent="Floor/middle8" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.5, 0, -0.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall10" parent="Floor/middle8" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.5, 0, -2.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall11" parent="Floor/middle8" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.5, 0, -0.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall12" parent="Floor/middle8" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.5, 0, -2.5)
+metadata/_edit_lock_ = true
 
 [node name="left8" type="Node3D" parent="Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56, 0, 0)
 
 [node name="FloorDirtLarge" parent="Floor/left8" instance=ExtResource("2_xiya6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.5, 0, 4.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge2" parent="Floor/left8" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -47.5, 0, 8.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge3" parent="Floor/left8" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -47.5, 0, 12.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge4" parent="Floor/left8" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, 4.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge5" parent="Floor/left8" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, 8.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge6" parent="Floor/left8" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, 12.5)
+metadata/_edit_lock_ = true
 
 [node name="right8" type="Node3D" parent="Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56, 0, 0)
 
 [node name="FloorDirtLarge8" parent="Floor/right8" instance=ExtResource("2_xiya6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.5, 0, -12.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge9" parent="Floor/right8" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -47.5, 0, -8.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge10" parent="Floor/right8" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -47.5, 0, -4.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge11" parent="Floor/right8" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, -12.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge12" parent="Floor/right8" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, -8.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge13" parent="Floor/right8" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, -4.5)
+metadata/_edit_lock_ = true
 
 [node name="middle9" type="Node3D" parent="Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56, 0, 0)
 
 [node name="FloorDirtSmall" parent="Floor/middle9" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.5, 0, 1.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall2" parent="Floor/middle9" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.5, 0, 1.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall3" parent="Floor/middle9" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.5, 0, -0.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall4" parent="Floor/middle9" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.5, 0, -2.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall5" parent="Floor/middle9" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.5, 0, -0.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall6" parent="Floor/middle9" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.5, 0, -2.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall7" parent="Floor/middle9" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.5, 0, 1.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall8" parent="Floor/middle9" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.5, 0, 1.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall9" parent="Floor/middle9" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.5, 0, -0.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall10" parent="Floor/middle9" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.5, 0, -2.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall11" parent="Floor/middle9" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.5, 0, -0.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall12" parent="Floor/middle9" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.5, 0, -2.5)
+metadata/_edit_lock_ = true
 
 [node name="left9" type="Node3D" parent="Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64, 0, 0)
 
 [node name="FloorDirtLarge" parent="Floor/left9" instance=ExtResource("2_xiya6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.5, 0, 4.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge2" parent="Floor/left9" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -47.5, 0, 8.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge3" parent="Floor/left9" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -47.5, 0, 12.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge4" parent="Floor/left9" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, 4.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge5" parent="Floor/left9" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, 8.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge6" parent="Floor/left9" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, 12.5)
+metadata/_edit_lock_ = true
 
 [node name="right9" type="Node3D" parent="Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64, 0, 0)
 
 [node name="FloorDirtLarge8" parent="Floor/right9" instance=ExtResource("2_xiya6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.5, 0, -12.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge9" parent="Floor/right9" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -47.5, 0, -8.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge10" parent="Floor/right9" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -47.5, 0, -4.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge11" parent="Floor/right9" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, -12.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge12" parent="Floor/right9" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, -8.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge13" parent="Floor/right9" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, -4.5)
+metadata/_edit_lock_ = true
 
 [node name="middle10" type="Node3D" parent="Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64, 0, 0)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall" parent="Floor/middle10" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.5, 0, 1.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall2" parent="Floor/middle10" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.5, 0, 1.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall3" parent="Floor/middle10" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.5, 0, -0.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall4" parent="Floor/middle10" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.5, 0, -2.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall5" parent="Floor/middle10" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.5, 0, -0.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall6" parent="Floor/middle10" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.5, 0, -2.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall7" parent="Floor/middle10" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.5, 0, 1.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall8" parent="Floor/middle10" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.5, 0, 1.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall9" parent="Floor/middle10" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.5, 0, -0.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall10" parent="Floor/middle10" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.5, 0, -2.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall11" parent="Floor/middle10" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.5, 0, -0.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall12" parent="Floor/middle10" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.5, 0, -2.5)
+metadata/_edit_lock_ = true
 
 [node name="left10" type="Node3D" parent="Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72, 0, 0)
 
 [node name="FloorDirtLarge" parent="Floor/left10" instance=ExtResource("2_xiya6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.5, 0, 4.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge2" parent="Floor/left10" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -47.5, 0, 8.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge3" parent="Floor/left10" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -47.5, 0, 12.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge4" parent="Floor/left10" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, 4.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge5" parent="Floor/left10" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, 8.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge6" parent="Floor/left10" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, 12.5)
+metadata/_edit_lock_ = true
 
 [node name="right10" type="Node3D" parent="Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72, 0, 0)
 
 [node name="FloorDirtLarge8" parent="Floor/right10" instance=ExtResource("2_xiya6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.5, 0, -12.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge9" parent="Floor/right10" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -47.5, 0, -8.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge10" parent="Floor/right10" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -47.5, 0, -4.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge11" parent="Floor/right10" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, -12.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge12" parent="Floor/right10" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, -8.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge13" parent="Floor/right10" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, -4.5)
+metadata/_edit_lock_ = true
 
 [node name="middle11" type="Node3D" parent="Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72, 0, 0)
 
 [node name="FloorDirtSmall" parent="Floor/middle11" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.5, 0, 1.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall2" parent="Floor/middle11" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.5, 0, 1.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall3" parent="Floor/middle11" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.5, 0, -0.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall4" parent="Floor/middle11" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.5, 0, -2.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall5" parent="Floor/middle11" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.5, 0, -0.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall6" parent="Floor/middle11" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.5, 0, -2.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall7" parent="Floor/middle11" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.5, 0, 1.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall8" parent="Floor/middle11" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.5, 0, 1.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall9" parent="Floor/middle11" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.5, 0, -0.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall10" parent="Floor/middle11" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.5, 0, -2.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall11" parent="Floor/middle11" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.5, 0, -0.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall12" parent="Floor/middle11" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.5, 0, -2.5)
+metadata/_edit_lock_ = true
 
 [node name="left11" type="Node3D" parent="Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80, 0, 0)
 
 [node name="FloorDirtLarge" parent="Floor/left11" instance=ExtResource("2_xiya6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.5, 0, 4.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge2" parent="Floor/left11" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -47.5, 0, 8.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge3" parent="Floor/left11" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -47.5, 0, 12.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge4" parent="Floor/left11" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, 4.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge5" parent="Floor/left11" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, 8.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge6" parent="Floor/left11" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, 12.5)
+metadata/_edit_lock_ = true
 
 [node name="right11" type="Node3D" parent="Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80, 0, 0)
 
 [node name="FloorDirtLarge8" parent="Floor/right11" instance=ExtResource("2_xiya6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.5, 0, -12.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge9" parent="Floor/right11" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -47.5, 0, -8.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge10" parent="Floor/right11" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -47.5, 0, -4.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge11" parent="Floor/right11" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, -12.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge12" parent="Floor/right11" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, -8.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge13" parent="Floor/right11" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, -4.5)
+metadata/_edit_lock_ = true
 
 [node name="middle12" type="Node3D" parent="Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80, 0, 0)
 
 [node name="FloorDirtSmall" parent="Floor/middle12" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.5, 0, 1.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall2" parent="Floor/middle12" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.5, 0, 1.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall3" parent="Floor/middle12" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.5, 0, -0.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall4" parent="Floor/middle12" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.5, 0, -2.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall5" parent="Floor/middle12" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.5, 0, -0.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall6" parent="Floor/middle12" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.5, 0, -2.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall7" parent="Floor/middle12" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.5, 0, 1.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall8" parent="Floor/middle12" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.6, 0, 1.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall9" parent="Floor/middle12" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.5, 0, -0.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall10" parent="Floor/middle12" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.5, 0, -2.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall11" parent="Floor/middle12" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -35.6, 0, -0.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtSmall12" parent="Floor/middle12" instance=ExtResource("1_nkwgo")]
 transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, -35.6, 0, -2.5)
+metadata/_edit_lock_ = true
 
 [node name="left12" type="Node3D" parent="Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88, 0, 0)
 
 [node name="FloorDirtLarge" parent="Floor/left12" instance=ExtResource("2_xiya6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.5, 0, 4.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge2" parent="Floor/left12" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -47.5, 0, 8.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge3" parent="Floor/left12" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -47.5, 0, 12.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge4" parent="Floor/left12" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, 4.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge5" parent="Floor/left12" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, 8.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge6" parent="Floor/left12" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, 12.5)
+metadata/_edit_lock_ = true
 
 [node name="right12" type="Node3D" parent="Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88, 0, 0)
 
 [node name="FloorDirtLarge8" parent="Floor/right12" instance=ExtResource("2_xiya6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.5, 0, -12.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge9" parent="Floor/right12" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -47.5, 0, -8.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge10" parent="Floor/right12" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -47.5, 0, -4.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge11" parent="Floor/right12" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, -12.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge12" parent="Floor/right12" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, -8.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge13" parent="Floor/right12" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, -4.5)
+metadata/_edit_lock_ = true
 
 [node name="left13" type="Node3D" parent="Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 91, 0, 0)
 
 [node name="FloorDirtLarge" parent="Floor/left13" instance=ExtResource("2_xiya6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.5, 0, 4.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge2" parent="Floor/left13" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -47.5, 0, 8.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge3" parent="Floor/left13" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -47.5, 0, 12.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge4" parent="Floor/left13" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, 4.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge5" parent="Floor/left13" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, 8.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge6" parent="Floor/left13" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, 12.5)
+metadata/_edit_lock_ = true
 
 [node name="right13" type="Node3D" parent="Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 91, 0, 0)
 
 [node name="FloorDirtLarge8" parent="Floor/right13" instance=ExtResource("2_xiya6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.5, 0, -12.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge9" parent="Floor/right13" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -47.5, 0, -8.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge10" parent="Floor/right13" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -47.5, 0, -4.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge11" parent="Floor/right13" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, -12.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge12" parent="Floor/right13" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, -8.5)
+metadata/_edit_lock_ = true
 
 [node name="FloorDirtLarge13" parent="Floor/right13" instance=ExtResource("2_xiya6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5, 0, -4.5)
+metadata/_edit_lock_ = true
+
+[node name="Level" type="Node3D" parent="."]
+
+[node name="1st part" type="Node3D" parent="Level"]
+
+[node name="wall" parent="Level/1st part" instance=ExtResource("1_uky3b")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 40, -0.1, 0)
+
+[node name="wall8" parent="Level/1st part" instance=ExtResource("1_uky3b")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 40, 3.9, 0)
+
+[node name="wall3" parent="Level/1st part" instance=ExtResource("1_uky3b")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 40, -0.1, 4)
+
+[node name="wall9" parent="Level/1st part" instance=ExtResource("1_uky3b")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 40, 3.9, 4)
+
+[node name="wall4" parent="Level/1st part" instance=ExtResource("1_uky3b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44, -0.1, 8)
+
+[node name="wall13" parent="Level/1st part" instance=ExtResource("1_uky3b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44, 3.9, 8)
+
+[node name="wall6" parent="Level/1st part" instance=ExtResource("1_uky3b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44, -0.1, -8)
+
+[node name="wall11" parent="Level/1st part" instance=ExtResource("1_uky3b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44, 3.9, -8)
+
+[node name="wall5" parent="Level/1st part" instance=ExtResource("1_uky3b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48, -0.1, 8)
+
+[node name="wall14" parent="Level/1st part" instance=ExtResource("1_uky3b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48, 3.9, 8)
+
+[node name="wall7" parent="Level/1st part" instance=ExtResource("1_uky3b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48, -0.1, -8)
+
+[node name="wall12" parent="Level/1st part" instance=ExtResource("1_uky3b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48, 3.9, -8)
+
+[node name="wall2" parent="Level/1st part" instance=ExtResource("1_uky3b")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 40, -0.1, -4)
+
+[node name="wall10" parent="Level/1st part" instance=ExtResource("1_uky3b")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 40, 3.9, -4)
+
+[node name="wall_corner" parent="Level/1st part" instance=ExtResource("2_e1prw")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 40, -0.1, 8)
+
+[node name="wall_corner4" parent="Level/1st part" instance=ExtResource("2_e1prw")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 40, 3.9, 8)
+
+[node name="wall_corner2" parent="Level/1st part" instance=ExtResource("2_e1prw")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 40, -0.1, -8)
+
+[node name="wall_corner3" parent="Level/1st part" instance=ExtResource("2_e1prw")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 40, 3.9, -8)
+
+[node name="back part" type="Node3D" parent="Level"]
+
+[node name="wall" parent="Level/back part" instance=ExtResource("1_uky3b")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 50, 3.9, 0)
+
+[node name="wall2" parent="Level/back part" instance=ExtResource("1_uky3b")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 50, 3.9, 4)
+
+[node name="wall3" parent="Level/back part" instance=ExtResource("1_uky3b")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 50, 3.9, 8)
+
+[node name="wall5" parent="Level/back part" instance=ExtResource("1_uky3b")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 50, 3.9, -4)
+
+[node name="wall6" parent="Level/back part" instance=ExtResource("1_uky3b")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 50, 3.9, -8)
+
+[node name="jumping" type="Node3D" parent="Level"]
+
+[node name="wall" parent="Level/jumping" instance=ExtResource("1_uky3b")]
+transform = Transform3D(-0.00174539, -0.999998, 4.37113e-08, 0, -4.37114e-08, -1, 0.999999, -0.00174539, 7.62932e-11, -38.2679, 4, 0)
+
+[node name="wall2" parent="Level/jumping" instance=ExtResource("1_uky3b")]
+transform = Transform3D(-0.00174539, -0.999998, 4.37113e-08, 0, -4.37114e-08, -1, 0.999999, -0.00174539, 7.62932e-11, -30.1092, 4, 0)
+
+[node name="wall4" parent="Level/jumping" instance=ExtResource("1_uky3b")]
+transform = Transform3D(-0.00174539, -0.999998, 4.37113e-08, 0, -4.37114e-08, -1, 0.999999, -0.00174539, 7.62932e-11, -19.3933, 7.77935, 0)
+
+[node name="wall7" parent="Level/jumping" instance=ExtResource("1_uky3b")]
+transform = Transform3D(-0.00174539, -0.999998, 4.37113e-08, 0, -4.37114e-08, -1, 0.999999, -0.00174539, 7.62932e-11, -13.0785, 16.3103, 0)
+
+[node name="wall8" parent="Level/jumping" instance=ExtResource("1_uky3b")]
+transform = Transform3D(-0.00174539, -0.999998, 4.37113e-08, 0, -4.37114e-08, -1, 0.999999, -0.00174539, 7.62932e-11, -4.92647, 17.9217, 0)
+
+[node name="wall9" parent="Level/jumping" instance=ExtResource("1_uky3b")]
+transform = Transform3D(-0.00174539, -0.999998, 4.37113e-08, 0, -4.37114e-08, -1, 0.999999, -0.00174539, 7.62932e-11, 12.7118, 15.5246, 0)
+
+[node name="JumpWall" parent="Level/jumping" instance=ExtResource("5_4arys")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -22.1704, 12.7, 0)
+
+[node name="JumpWall2" parent="Level/jumping" instance=ExtResource("5_4arys")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -16.9721, 9.18951, 0)
+
+[node name="JumpWall3" parent="Level/jumping" instance=ExtResource("5_4arys")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -26.0203, 3.85128, 0)
 
 [node name="Walls" type="Node3D" parent="."]
+metadata/_edit_lock_ = true
 
 [node name="SouthWall" type="Node3D" parent="Walls"]
 
@@ -1250,3 +1668,29 @@ environment = SubResource("Environment_ugn4h")
 
 [node name="Knight" parent="." instance=ExtResource("8_jsk3o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39, 0, 0)
+
+[node name="RaceTimer" type="Timer" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 146.0
+offset_bottom = 59.0
+theme = SubResource("Theme_6iypd")
+
+[node name="TimeLabel" type="Label" parent="CanvasLayer/UI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.068
+anchor_top = 0.237
+anchor_right = 0.068
+anchor_bottom = 0.237
+offset_left = 0.0719995
+offset_top = 0.0169992
+offset_right = 164.072
+offset_bottom = 55.017
+theme_override_colors/font_color = Color(0.956458, 0.962777, 1, 1)
+theme_override_font_sizes/font_size = 24
+text = "XXXXXXXXXXX"

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjveof4x0pd1w"]
+
+[ext_resource type="PackedScene" uid="uid://dkkiomtterolo" path="res://models/Assets/gltf/wall.gltf" id="1_1crsu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hnboy"]
+albedo_color = Color(0.0392157, 1, 1, 1)
+
+[node name="wall2" instance=ExtResource("1_1crsu")]
+
+[node name="wall" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_hnboy")
