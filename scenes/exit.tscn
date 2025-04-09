@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://dnyjgsw65arkk"]
+
+[ext_resource type="Script" uid="uid://bie1oxbq6xipi" path="res://scenes/exit.gd" id="1_l0aq0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l0aq0"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.98, 0.625567, 0.294, 0.933333)
+
+[sub_resource type="BoxMesh" id="BoxMesh_uyw7u"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_24kvk"]
+size = Vector3(0.1, 1, 1)
+
+[node name="Exit" type="Node3D"]
+script = ExtResource("1_l0aq0")
+
+[node name="ExitWall" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_l0aq0")
+mesh = SubResource("BoxMesh_uyw7u")
+
+[node name="Exit Area" type="Area3D" parent="." groups=["Player"]]
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Exit Area"]
+shape = SubResource("BoxShape3D_24kvk")
+
+[connection signal="body_entered" from="Exit Area" to="." method="_on_exit_area_body_entered"]

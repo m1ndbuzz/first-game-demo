@@ -33,12 +33,35 @@ var coyote_timer = coyote_time
 var was_going_up = false
 var wall_jump_direction = Vector3.ZERO
 
+var can_move = true
+var finished = false
+var started = false
+
+# Variable to track time
+var time_elapsed = 0.0
+# Reference to the Label node
+@onready var timer_label = $"../../CanvasLayer/UI/TimeLabel"
 @onready var spring_arm = $SpringArm3D
 @onready var model = $Rig
 @onready var anim_tree = $AnimationTree
 @onready var anim_state = $AnimationTree.get("parameters/playback")
 
 func _physics_process(delta: float) -> void:
+	if not finished and started:
+		# Update time
+		time_elapsed += delta
+		
+		# Format the time (minutes:seconds.milliseconds)
+		var minutes = int(time_elapsed / 60)
+		var seconds = int(time_elapsed) % 60
+		# Corrected milliseconds calculation
+		var milliseconds = int(fmod(time_elapsed * 1000, 1000))
+		var time_string = "%02d:%02d.%03d" % [minutes, seconds, milliseconds]
+		
+		# Update the Label text
+		if timer_label:
+			timer_label.text = time_string
+	
 	velocity.y += -gravity * delta
 	
 	if not is_on_floor():
@@ -55,6 +78,7 @@ func _physics_process(delta: float) -> void:
 	was_going_up = velocity.y > 0
 	
 	# Controller camera rotation
+	
 	var look_h = Input.get_axis("look_horizontal_negative", "look_horizontal_positive")  # Left/Right
 	var look_v = Input.get_axis("look_vertical_negative", "look_vertical_positive")    # Up/Down
 	if abs(look_h) > 0.1 or abs(look_v) > 0.1:  # Deadzone
@@ -62,85 +86,96 @@ func _physics_process(delta: float) -> void:
 		spring_arm.rotation.x -= look_v * controller_sensitivity * delta
 		spring_arm.rotation_degrees.x = clamp(spring_arm.rotation_degrees.x, -90.0, 30.0)
 		
-		
-	#if not jumping and not dashing:
-	#if not dashing and not wall_jumping:
-	get_move_input(delta)
+	if can_move:	
+		#if not jumping and not dashing:
+		#if not dashing and not wall_jumping:
+		get_move_input(delta)
 	
-	#Handle wall jump timers
-	if wall_jumping:
-		wall_jump_timer -= delta
-		if wall_jump_timer <= 0:
-			wall_jumping = false # End wall jump
+		#Handle wall jump timers
+		if wall_jumping:
+			wall_jump_timer -= delta
+			if wall_jump_timer <= 0:
+				wall_jumping = false # End wall jump
+			else:
+				velocity.x = wall_jump_direction.x
+				velocity.z = wall_jump_direction.z
+		
+		# Handle dash timers
+		if dashing:
+			dash_timer -= delta
+			if dash_timer <= 0:
+				dashing = false  # End dash
+			else:
+				# Move forward during dash
+				var dash_speed = dash_distance / dash_duration  # Calculate speed to cover distance
+				velocity.x = dash_direction.x * dash_speed
+				velocity.z = dash_direction.z * dash_speed
 		else:
+			dash_cooldown_timer -= delta  # Reduce cooldown when not dashing
+		
+		move_and_slide()
+	
+		# Check for wall collision
+		var wall_normal = Vector3.ZERO
+		is_on_jumpable_wall = false
+		if is_on_wall() and not is_on_floor():
+			for i in get_slide_collision_count():
+				var collision = get_slide_collision(i)
+				var collider = collision.get_collider()
+				if collider is StaticBody3D:
+					# Safely check for the property with a default value
+					var is_jumpable = collider.get("is_jumpable")
+					if is_jumpable == true:
+						is_on_jumpable_wall = true
+						wall_normal = collision.get_normal()  # Store wall normal for jump direction
+						break
+
+		# Wall jump
+		if is_on_jumpable_wall and Input.is_action_just_pressed("jump"):
+			# Apply velocity: upward force + push away from wall
+			velocity.y = wall_jump_velocity.y
+			var push_direction = wall_normal * wall_jump_velocity.z  # Push off wall
+			#print("Push dir: ", push_direction)
+			wall_jump_direction = Vector3(push_direction.x, 0, push_direction.z)
+			#print("Wall jump dir: ", wall_jump_direction)
 			velocity.x = wall_jump_direction.x
 			velocity.z = wall_jump_direction.z
-	
-	# Handle dash timers
-	if dashing:
-		dash_timer -= delta
-		if dash_timer <= 0:
-			dashing = false  # End dash
-		else:
-			# Move forward during dash
-			var dash_speed = dash_distance / dash_duration  # Calculate speed to cover distance
-			velocity.x = dash_direction.x * dash_speed
-			velocity.z = dash_direction.z * dash_speed
+			#print("Wall jump performed!")
+			wall_jumping = true
+			wall_jump_timer = wall_jump_duration
+			anim_tree.set("parameters/conditions/jumping", true)
+			anim_tree.set("parameters/conditions/grounded", false)
+		
+		if velocity.length() > 1:
+			model.rotation.y = lerp_angle(model.rotation.y, spring_arm.rotation.y, rotation_speed * delta)
+			#var direction = Vector3(velocity.x, 0, velocity.z).normalized()
+			#var angle = atan2(direction.x, direction.z)
+			#print("Angle: ",angle)
+			#model.rotation.y = angle
+		if coyote_timer > 0 and Input.is_action_just_pressed("jump"):
+			jump()
+		if is_on_floor() and not last_floor:
+			jumping = false
+			coyote_timer = coyote_time
+			anim_tree.set("parameters/conditions/jumping", false)
+			anim_tree.set("parameters/conditions/grounded", true)
+		if not is_on_floor() and not jumping:
+			anim_state.travel("Jump_Idle")
+			anim_tree.set("parameters/conditions/grounded", false)
+		last_floor = is_on_floor()
 	else:
-		dash_cooldown_timer -= delta  # Reduce cooldown when not dashing
-	
-	move_and_slide()
-	
-	# Check for wall collision
-	var wall_normal = Vector3.ZERO
-	is_on_jumpable_wall = false
-	if is_on_wall() and not is_on_floor():
-		for i in get_slide_collision_count():
-			var collision = get_slide_collision(i)
-			var collider = collision.get_collider()
-			if collider is StaticBody3D:
-				# Safely check for the property with a default value
-				var is_jumpable = collider.get("is_jumpable")
-				if is_jumpable == true:
-					is_on_jumpable_wall = true
-					wall_normal = collision.get_normal()  # Store wall normal for jump direction
-					break
-
-	# Wall jump
-	if is_on_jumpable_wall and Input.is_action_just_pressed("jump"):
-		# Apply velocity: upward force + push away from wall
-		velocity.y = wall_jump_velocity.y
-		var push_direction = wall_normal * wall_jump_velocity.z  # Push off wall
-		print("Push dir: ", push_direction)
-		wall_jump_direction = Vector3(push_direction.x, 0, push_direction.z)
-		velocity.x = wall_jump_direction.x
-		velocity.z = wall_jump_direction.z
-		print("Wall jump performed!")
-		wall_jumping = true
-		wall_jump_timer = wall_jump_duration
-		anim_tree.set("parameters/conditions/jumping", true)
-		anim_tree.set("parameters/conditions/grounded", false)
-	
-	if velocity.length() > 1:
-		model.rotation.y = lerp_angle(model.rotation.y, spring_arm.rotation.y, rotation_speed * delta)
-	if coyote_timer > 0 and Input.is_action_just_pressed("jump"):
-		jump()
-	if is_on_floor() and not last_floor:
-		jumping = false
-		coyote_timer = coyote_time
-		anim_tree.set("parameters/conditions/jumping", false)
-		anim_tree.set("parameters/conditions/grounded", true)
-	if not is_on_floor() and not jumping:
-		anim_state.travel("Jump_Idle")
-		anim_tree.set("parameters/conditions/grounded", false)
-	last_floor = is_on_floor()
+		velocity.x = 0
+		velocity.y = 0
+		velocity.z = 0
+		anim_state.travel("Cheer")
 	
 func jump():
+	started = true
 	velocity.y = jump_speed
 	jumping = true
 	anim_tree.set("parameters/conditions/jumping", true)
 	anim_tree.set("parameters/conditions/grounded", false)
-	print("Jump pressed!")  # Debug
+	#print("Jump pressed!")  # Debug
 	
 func get_move_input(delta: float) -> void:
 	
@@ -151,6 +186,7 @@ func get_move_input(delta: float) -> void:
 	
 	# Check for dash input
 	if Input.is_action_just_pressed("dash") and not dashing and dash_cooldown_timer <= 0:
+		started = true
 		dashing = true
 		dash_timer = dash_duration
 		dash_cooldown_timer = dash_cooldown
@@ -159,7 +195,7 @@ func get_move_input(delta: float) -> void:
 		dash_direction.y = 0  # Ensure no vertical movement
 		dash_direction = dash_direction.normalized()
 		anim_state.travel("Dash")
-		print("Dash pressed!")  # Debug
+		#print("Dash pressed!")  # Debug
 		
 	#if not dashing:
 	var input = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
@@ -167,8 +203,10 @@ func get_move_input(delta: float) -> void:
 	# Set velocity directly based on input
 	
 	if input != Vector2.ZERO:  # If there's input
+		started = true
 		velocity.x = direction.x * speed
 		velocity.z = direction.z * speed
+		#print("GMI/Direction:",direction)
 	else:  # No input, stop immediately
 		velocity.x = move_toward(velocity.x, 0, speed * 10 * delta)
 		velocity.z = move_toward(velocity.z, 0, speed * 10 * delta)
@@ -181,19 +219,19 @@ func get_move_input(delta: float) -> void:
 	
 func _unhandled_input(event: InputEvent) -> void:
 	# Toggle mouse capture with Escape
-	if event.is_action_pressed("ui_cancel"):  # Escape key
-		if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		else:
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	if event is InputEventMouseMotion:
-		spring_arm.rotation.x -= event.relative.y * mouse_sensitivity
-		spring_arm.rotation_degrees.x = clamp(spring_arm.rotation_degrees.x, -90.0, 30.0)
-		spring_arm.rotation.y -= event.relative.x * mouse_sensitivity		
-	if event.is_action_pressed("interact"):
-		anim_state.travel("Interact")
-	if event.is_action_pressed("emote"):
-		anim_state.travel("Cheer")
+	if can_move:
+		if event.is_action_pressed("ui_cancel"):  # Escape key
+			if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			else:
+				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		if event is InputEventMouseMotion:
+			spring_arm.rotation.x -= event.relative.y * mouse_sensitivity
+			spring_arm.rotation_degrees.x = clamp(spring_arm.rotation_degrees.x, -90.0, 30.0)
+			spring_arm.rotation.y -= event.relative.x * mouse_sensitivity		
+		if event.is_action_pressed("interact"):
+			anim_state.travel("Interact")
+		
 		
 	# Debug raw controller input
 	#if event is InputEventJoypadButton:

@@ -1,15 +1,15 @@
 [gd_scene load_steps=13 format=3 uid="uid://bxy7l017dhljx"]
 
-[ext_resource type="Script" uid="uid://85xuaf65kgst" path="res://main.gd" id="1_6iypd"]
 [ext_resource type="PackedScene" uid="uid://bgb3ejsotxjsh" path="res://scenes/stairs.tscn" id="1_kggio"]
 [ext_resource type="PackedScene" uid="uid://brutgdnum3aov" path="res://scenes/floor_dirt_small.tscn" id="1_nkwgo"]
 [ext_resource type="PackedScene" uid="uid://d36oftrp4v8l2" path="res://scenes/wall.tscn" id="1_uky3b"]
 [ext_resource type="PackedScene" uid="uid://b7ismkth3igrf" path="res://scenes/wall_corner.tscn" id="2_e1prw"]
+[ext_resource type="Script" uid="uid://c1jq4r7wepsuj" path="res://spawner.gd" id="2_tereu"]
 [ext_resource type="PackedScene" uid="uid://cek0rrdybgwqk" path="res://scenes/floor_dirt_large.tscn" id="2_xiya6"]
 [ext_resource type="PackedScene" uid="uid://d18qrt8iwyore" path="res://scenes/jump_wall.tscn" id="5_4arys"]
 [ext_resource type="PackedScene" uid="uid://bg6stt5t50c8h" path="res://scenes/torch_mounted_lit.tscn" id="5_j8xl6"]
 [ext_resource type="PackedScene" uid="uid://dyueppnsn2ao7" path="res://scenes/knight.tscn" id="8_jsk3o"]
-[ext_resource type="PackedScene" uid="uid://bfpa2tjrjk6of" path="res://scenes/exit_wall.tscn" id="8_w4yom"]
+[ext_resource type="PackedScene" uid="uid://dnyjgsw65arkk" path="res://scenes/exit.tscn" id="9_6iypd"]
 
 [sub_resource type="Environment" id="Environment_ugn4h"]
 glow_enabled = true
@@ -21,13 +21,24 @@ glow_blend_mode = 0
 default_font_size = 22
 
 [node name="main" type="Node3D"]
-script = ExtResource("1_6iypd")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ugn4h")
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.0871558, -0.936117, 0.340718, 0, 0.34202, 0.939693, -0.996195, 0.0818996, -0.029809, 0, 50.6, 0)
 shadow_enabled = true
 
+[node name="Spawner" type="Node3D" parent="."]
+script = ExtResource("2_tereu")
+
+[node name="Knight" parent="Spawner" instance=ExtResource("8_jsk3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 0, 35)
+fall_multiplier = 3
+dash_cooldown = 0.5
+
 [node name="Floor" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.5, 0, -8.7)
 
 [node name="middle2" type="Node3D" parent="Floor"]
 
@@ -1329,6 +1340,7 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5,
 metadata/_edit_lock_ = true
 
 [node name="Level" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.5, 0, -8.7)
 
 [node name="1st part" type="Node3D" parent="Level"]
 
@@ -1406,10 +1418,10 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 50, 3.
 [node name="jumping" type="Node3D" parent="Level"]
 
 [node name="wall" parent="Level/jumping" instance=ExtResource("1_uky3b")]
-transform = Transform3D(-0.00174539, -0.999998, 4.37113e-08, 0, -4.37114e-08, -1, 0.999999, -0.00174539, 7.62932e-11, -38.2679, 4, 0)
+transform = Transform3D(-0.00174539, -0.999998, 4.37113e-08, 0, -4.37114e-08, -1, 0.999999, -0.00174539, 7.62932e-11, -38.2679, 3.62155, 9.53674e-07)
 
 [node name="wall2" parent="Level/jumping" instance=ExtResource("1_uky3b")]
-transform = Transform3D(-0.00174539, -0.999998, 4.37113e-08, 0, -4.37114e-08, -1, 0.999999, -0.00174539, 7.62932e-11, -30.1092, 4, 0)
+transform = Transform3D(-0.00174539, -0.999998, 4.37113e-08, 0, -4.37114e-08, -1, 0.999999, -0.00174539, 7.62932e-11, -30.1092, 4.64603, 0)
 
 [node name="wall4" parent="Level/jumping" instance=ExtResource("1_uky3b")]
 transform = Transform3D(-0.00174539, -0.999998, 4.37113e-08, 0, -4.37114e-08, -1, 0.999999, -0.00174539, 7.62932e-11, -19.3933, 7.77935, 0)
@@ -1423,6 +1435,9 @@ transform = Transform3D(-0.00174539, -0.999998, 4.37113e-08, 0, -4.37114e-08, -1
 [node name="wall9" parent="Level/jumping" instance=ExtResource("1_uky3b")]
 transform = Transform3D(-0.00174539, -0.999998, 4.37113e-08, 0, -4.37114e-08, -1, 0.999999, -0.00174539, 7.62932e-11, 12.7118, 15.5246, 0)
 
+[node name="wall10" parent="Level/jumping" instance=ExtResource("1_uky3b")]
+transform = Transform3D(-0.00174539, -0.999998, 4.37113e-08, 0, -4.37114e-08, -1, 0.999999, -0.00174539, 7.62932e-11, 30.028, 11.2366, 2.86102e-06)
+
 [node name="JumpWall" parent="Level/jumping" instance=ExtResource("5_4arys")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -22.1704, 12.7, 0)
 
@@ -1433,7 +1448,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -16.97
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -26.0203, 3.85128, 0)
 
 [node name="Walls" type="Node3D" parent="."]
-metadata/_edit_lock_ = true
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.5, 0, -8.7)
 
 [node name="SouthWall" type="Node3D" parent="Walls"]
 
@@ -1644,7 +1659,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -50, -
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50, -0.1, -15)
 
 [node name="Enternace" type="Node3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -45.5, 2.2, 2)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -7.5, 2.2, 36.8)
 
 [node name="enterance" parent="Enternace" instance=ExtResource("1_kggio")]
 transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 2, -2.3, -4)
@@ -1656,20 +1671,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -0.3, 0)
 
 [node name="Exit" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.5, 0, -8.7)
 
 [node name="exit" parent="Exit" instance=ExtResource("1_kggio")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 45.5, -4, 0)
 
-[node name="ExitWall" parent="Exit" instance=ExtResource("8_w4yom")]
+[node name="Exit  Wall" parent="Exit" instance=ExtResource("9_6iypd")]
 transform = Transform3D(3.9, 0, 0, 0, 3.9, 0, 0, 0, 3.9, 49.7, -2, 0)
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_ugn4h")
-
-[node name="Knight" parent="." instance=ExtResource("8_jsk3o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39, 0, 0)
-
-[node name="RaceTimer" type="Timer" parent="."]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -1693,4 +1701,4 @@ offset_right = 164.072
 offset_bottom = 55.017
 theme_override_colors/font_color = Color(0.956458, 0.962777, 1, 1)
 theme_override_font_sizes/font_size = 24
-text = "XXXXXXXXXXX"
+text = "GO!"
