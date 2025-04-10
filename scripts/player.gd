@@ -1,5 +1,5 @@
 extends CharacterBody3D
-class_name Knight
+class_name Player
 
 @export var speed = 10.0
 @export var air_speed = 3.0
@@ -47,6 +47,47 @@ var time_elapsed = 0.0
 @onready var anim_state = $AnimationTree.get("parameters/playback")
 
 func _physics_process(delta: float) -> void:
+	update_time(delta)
+	velocity.y += -gravity * delta
+	was_going_up = velocity.y > 0
+	handle_jump_gravity(delta)	
+	controller_camera_rotation(delta)
+	
+	if can_move:
+		get_move_input(delta)
+		handle_coyote_time_timer(delta)
+		handle_wall_jump_timer(delta)
+		handle_dash_timer(delta)
+		move_and_slide()
+	
+		# Check for wall collision
+		var wall_normal = Vector3.ZERO
+		is_on_jumpable_wall = false
+		if is_on_wall() and not is_on_floor():
+			wall_normal = wall_jump_check()
+		# Wall jump
+		if is_on_jumpable_wall and Input.is_action_just_pressed("jump"):
+			wall_jump(wall_normal)
+		
+		#Model rotation based on camera angle when there's movent
+		if velocity.length() > 1:
+			model.rotation.y = lerp_angle(model.rotation.y, spring_arm.rotation.y, rotation_speed * delta)
+		
+		if coyote_timer > 0 and Input.is_action_just_pressed("jump"):
+			jump()
+		if is_on_floor() and not last_floor:
+			jump_end()
+		if not is_on_floor() and not jumping:
+			anim_state.travel("Jump_Idle")
+			anim_tree.set("parameters/conditions/grounded", false)
+		last_floor = is_on_floor()
+	else:
+		velocity.x = 0
+		velocity.y = 0
+		velocity.z = 0
+		anim_state.travel("Cheer")
+	
+func update_time(delta: float):
 	if not finished and started:
 		# Update time
 		time_elapsed += delta
@@ -61,47 +102,22 @@ func _physics_process(delta: float) -> void:
 		# Update the Label text
 		if timer_label:
 			timer_label.text = time_string
-	
-	velocity.y += -gravity * delta
-	
-	if not is_on_floor():
-		coyote_timer -= delta	
-	
-	if jumping and not is_on_floor():
-		if was_going_up and velocity.y <= 0:  # Just reached or passed peak
-			# Apply fall multiplier only when descending after peak
-			velocity.y += -gravity * (fall_multiplier) * delta
-		elif velocity.y < 0:  # Already falling
-			velocity.y += -gravity * (fall_multiplier) * delta
 
-	# Update ascent tracking
-	was_going_up = velocity.y > 0
-	
-	# Controller camera rotation
-	
-	var look_h = Input.get_axis("look_horizontal_negative", "look_horizontal_positive")  # Left/Right
-	var look_v = Input.get_axis("look_vertical_negative", "look_vertical_positive")    # Up/Down
-	if abs(look_h) > 0.1 or abs(look_v) > 0.1:  # Deadzone
-		spring_arm.rotation.y -= look_h * controller_sensitivity * delta
-		spring_arm.rotation.x -= look_v * controller_sensitivity * delta
-		spring_arm.rotation_degrees.x = clamp(spring_arm.rotation_degrees.x, -90.0, 30.0)
-		
-	if can_move:	
-		#if not jumping and not dashing:
-		#if not dashing and not wall_jumping:
-		get_move_input(delta)
-	
-		#Handle wall jump timers
-		if wall_jumping:
-			wall_jump_timer -= delta
-			if wall_jump_timer <= 0:
-				wall_jumping = false # End wall jump
-			else:
-				velocity.x = wall_jump_direction.x
-				velocity.z = wall_jump_direction.z
-		
-		# Handle dash timers
-		if dashing:
+func handle_coyote_time_timer(delta: float):
+	if not is_on_floor():
+		coyote_timer -= delta
+
+func handle_wall_jump_timer(delta: float):
+	if wall_jumping:
+		wall_jump_timer -= delta
+		if wall_jump_timer <= 0:
+			wall_jumping = false # End wall jump
+		else:
+			velocity.x = wall_jump_direction.x
+			velocity.z = wall_jump_direction.z
+
+func handle_dash_timer(delta: float):
+	if dashing:
 			dash_timer -= delta
 			if dash_timer <= 0:
 				dashing = false  # End dash
@@ -110,65 +126,26 @@ func _physics_process(delta: float) -> void:
 				var dash_speed = dash_distance / dash_duration  # Calculate speed to cover distance
 				velocity.x = dash_direction.x * dash_speed
 				velocity.z = dash_direction.z * dash_speed
-		else:
-			dash_cooldown_timer -= delta  # Reduce cooldown when not dashing
-		
-		move_and_slide()
-	
-		# Check for wall collision
-		var wall_normal = Vector3.ZERO
-		is_on_jumpable_wall = false
-		if is_on_wall() and not is_on_floor():
-			for i in get_slide_collision_count():
-				var collision = get_slide_collision(i)
-				var collider = collision.get_collider()
-				if collider is StaticBody3D:
-					# Safely check for the property with a default value
-					var is_jumpable = collider.get("is_jumpable")
-					if is_jumpable == true:
-						is_on_jumpable_wall = true
-						wall_normal = collision.get_normal()  # Store wall normal for jump direction
-						break
-
-		# Wall jump
-		if is_on_jumpable_wall and Input.is_action_just_pressed("jump"):
-			# Apply velocity: upward force + push away from wall
-			velocity.y = wall_jump_velocity.y
-			var push_direction = wall_normal * wall_jump_velocity.z  # Push off wall
-			#print("Push dir: ", push_direction)
-			wall_jump_direction = Vector3(push_direction.x, 0, push_direction.z)
-			#print("Wall jump dir: ", wall_jump_direction)
-			velocity.x = wall_jump_direction.x
-			velocity.z = wall_jump_direction.z
-			#print("Wall jump performed!")
-			wall_jumping = true
-			wall_jump_timer = wall_jump_duration
-			anim_tree.set("parameters/conditions/jumping", true)
-			anim_tree.set("parameters/conditions/grounded", false)
-		
-		if velocity.length() > 1:
-			model.rotation.y = lerp_angle(model.rotation.y, spring_arm.rotation.y, rotation_speed * delta)
-			#var direction = Vector3(velocity.x, 0, velocity.z).normalized()
-			#var angle = atan2(direction.x, direction.z)
-			#print("Angle: ",angle)
-			#model.rotation.y = angle
-		if coyote_timer > 0 and Input.is_action_just_pressed("jump"):
-			jump()
-		if is_on_floor() and not last_floor:
-			jumping = false
-			coyote_timer = coyote_time
-			anim_tree.set("parameters/conditions/jumping", false)
-			anim_tree.set("parameters/conditions/grounded", true)
-		if not is_on_floor() and not jumping:
-			anim_state.travel("Jump_Idle")
-			anim_tree.set("parameters/conditions/grounded", false)
-		last_floor = is_on_floor()
 	else:
-		velocity.x = 0
-		velocity.y = 0
-		velocity.z = 0
-		anim_state.travel("Cheer")
-	
+		dash_cooldown_timer -= delta  # Reduce cooldown when not dashing
+
+func controller_camera_rotation(delta: float):
+	# Controller camera rotation
+	var look_h = Input.get_axis("look_horizontal_negative", "look_horizontal_positive")  # Left/Right
+	var look_v = Input.get_axis("look_vertical_negative", "look_vertical_positive")    # Up/Down
+	if abs(look_h) > 0.1 or abs(look_v) > 0.1:  # Deadzone
+		spring_arm.rotation.y -= look_h * controller_sensitivity * delta
+		spring_arm.rotation.x -= look_v * controller_sensitivity * delta
+		spring_arm.rotation_degrees.x = clamp(spring_arm.rotation_degrees.x, -90.0, 30.0)
+			
+func handle_jump_gravity(delta: float):
+	if jumping and not is_on_floor():
+		if was_going_up and velocity.y <= 0:  # Just reached or passed peak
+			# Apply fall multiplier only when descending after peak
+			velocity.y += -gravity * (fall_multiplier) * delta
+		elif velocity.y < 0:  # Already falling
+			velocity.y += -gravity * (fall_multiplier) * delta
+			
 func jump():
 	started = true
 	velocity.y = jump_speed
@@ -176,6 +153,37 @@ func jump():
 	anim_tree.set("parameters/conditions/jumping", true)
 	anim_tree.set("parameters/conditions/grounded", false)
 	#print("Jump pressed!")  # Debug
+	
+func jump_end():
+	jumping = false
+	coyote_timer = coyote_time
+	anim_tree.set("parameters/conditions/jumping", false)
+	anim_tree.set("parameters/conditions/grounded", true)
+	
+func wall_jump(wall_normal):
+	# Apply velocity: upward force + push away from wall
+	velocity.y = wall_jump_velocity.y
+	var push_direction = wall_normal * wall_jump_velocity.z  # Push off wall
+	wall_jump_direction = Vector3(push_direction.x, 0, push_direction.z)
+	velocity.x = wall_jump_direction.x
+	velocity.z = wall_jump_direction.z
+	wall_jumping = true
+	wall_jump_timer = wall_jump_duration
+	anim_state.travel("Jump_Start")
+
+	
+
+func wall_jump_check() -> Vector3:
+	for i in get_slide_collision_count():
+				var collision = get_slide_collision(i)
+				var collider = collision.get_collider()
+				if collider is StaticBody3D:
+					# Safely check for the property with a default value
+					var is_jumpable = collider.get("is_jumpable")
+					if is_jumpable == true:
+						is_on_jumpable_wall = true
+						return collision.get_normal()  # Store wall normal for jump direction
+	return Vector3.ZERO
 	
 func get_move_input(delta: float) -> void:
 	

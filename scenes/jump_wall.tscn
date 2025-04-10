@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://d18qrt8iwyore"]
 
-[ext_resource type="Script" uid="uid://ci8yvodjkuq08" path="res://scenes/jump_wall.gd" id="1_gxidr"]
+[ext_resource type="Script" uid="uid://ci8yvodjkuq08" path="res://scripts/jump_wall.gd" id="1_gxidr"]
 [ext_resource type="PackedScene" uid="uid://bjveof4x0pd1w" path="res://scenes/jumpable_wall.tscn" id="2_gxidr"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gxidr"]

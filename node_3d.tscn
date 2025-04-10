@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://brutgdnum3aov" path="res://scenes/floor_dirt_small.tscn" id="1_nkwgo"]
 [ext_resource type="PackedScene" uid="uid://d36oftrp4v8l2" path="res://scenes/wall.tscn" id="1_uky3b"]
 [ext_resource type="PackedScene" uid="uid://b7ismkth3igrf" path="res://scenes/wall_corner.tscn" id="2_e1prw"]
-[ext_resource type="Script" uid="uid://c1jq4r7wepsuj" path="res://spawner.gd" id="2_tereu"]
+[ext_resource type="Script" uid="uid://c1jq4r7wepsuj" path="res://scripts/spawner.gd" id="2_tereu"]
 [ext_resource type="PackedScene" uid="uid://cek0rrdybgwqk" path="res://scenes/floor_dirt_large.tscn" id="2_xiya6"]
 [ext_resource type="PackedScene" uid="uid://d18qrt8iwyore" path="res://scenes/jump_wall.tscn" id="5_4arys"]
 [ext_resource type="PackedScene" uid="uid://bg6stt5t50c8h" path="res://scenes/torch_mounted_lit.tscn" id="5_j8xl6"]
@@ -34,7 +34,8 @@ script = ExtResource("2_tereu")
 
 [node name="Knight" parent="Spawner" instance=ExtResource("8_jsk3o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 0, 35)
-fall_multiplier = 3
+air_speed = 4.0
+fall_multiplier = 4
 dash_cooldown = 0.5
 
 [node name="Floor" type="Node3D" parent="."]

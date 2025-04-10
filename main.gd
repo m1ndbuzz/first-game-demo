@@ -3,9 +3,9 @@ extends Node3D
 var time_elapsed = 0.0
 # Reference to the Label node
 @onready var timer_label = $CanvasLayer/UI/TimeLabel
+@onready var player = $Spawner/Knight
 
 func _process(delta):
-	
 	if not player.finished and player.started:
 		# Update time
 		time_elapsed += delta
