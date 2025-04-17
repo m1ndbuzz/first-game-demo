@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://bxy7l017dhljx"]
+[gd_scene load_steps=14 format=3 uid="uid://bxy7l017dhljx"]
 
 [ext_resource type="PackedScene" uid="uid://bgb3ejsotxjsh" path="res://scenes/stairs.tscn" id="1_kggio"]
 [ext_resource type="PackedScene" uid="uid://brutgdnum3aov" path="res://scenes/floor_dirt_small.tscn" id="1_nkwgo"]
+[ext_resource type="Script" uid="uid://85xuaf65kgst" path="res://main.gd" id="1_tereu"]
 [ext_resource type="PackedScene" uid="uid://d36oftrp4v8l2" path="res://scenes/wall.tscn" id="1_uky3b"]
 [ext_resource type="PackedScene" uid="uid://b7ismkth3igrf" path="res://scenes/wall_corner.tscn" id="2_e1prw"]
 [ext_resource type="Script" uid="uid://c1jq4r7wepsuj" path="res://scripts/spawner.gd" id="2_tereu"]
@@ -21,6 +22,7 @@ glow_blend_mode = 0
 default_font_size = 22
 
 [node name="main" type="Node3D"]
+script = ExtResource("1_tereu")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ugn4h")
@@ -1703,3 +1705,16 @@ offset_bottom = 55.017
 theme_override_colors/font_color = Color(0.956458, 0.962777, 1, 1)
 theme_override_font_sizes/font_size = 24
 text = "GO!"
+
+[node name="ScoresLabel" type="Label" parent="CanvasLayer/UI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 5.479
+anchor_top = 0.5
+anchor_right = 7.815
+anchor_bottom = 2.841
+offset_left = 0.065979
+offset_top = -19.5
+offset_right = 0.0098877
+offset_bottom = 30.381
+horizontal_alignment = 2

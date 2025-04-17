@@ -2,11 +2,17 @@ extends Node3D
 # Variable to track time
 var time_elapsed = 0.0
 # Reference to the Label node
-@onready var timer_label = $CanvasLayer/UI/TimeLabel
-@onready var player = $Spawner/Knight
+var timer_label
+var player
+@export var time_string = ""
 
+func _ready() -> void:
+	SignalManager.restart.connect(_restart)
+	player = $Spawner/Knight
+	timer_label = $CanvasLayer/UI/TimeLabel
 func _process(delta):
-	if not player.finished and player.started:
+	
+	if player and not player.finished and player.started:
 		# Update time
 		time_elapsed += delta
 		
@@ -15,8 +21,17 @@ func _process(delta):
 		var seconds = int(time_elapsed) % 60
 		# Corrected milliseconds calculation
 		var milliseconds = int(fmod(time_elapsed * 1000, 1000))
-		var time_string = "%02d:%02d.%03d" % [minutes, seconds, milliseconds]
+		time_string = "%02d:%02d.%03d" % [minutes, seconds, milliseconds]
 		
 		# Update the Label text
 		if timer_label:
 			timer_label.text = time_string
+		else:
+			print("Can't access the TIME label")
+		print("Time: ", time_string)
+		
+func _restart():
+	time_elapsed = 0.0
+	player = $Spawner/Knight
+	timer_label.text = "GO!"
+	
