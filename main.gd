@@ -10,6 +10,7 @@ func _ready() -> void:
 	SignalManager.restart.connect(_restart)
 	player = $Spawner/Knight
 	timer_label = $CanvasLayer/UI/TimeLabel
+
 func _process(delta):
 	
 	if player and not player.finished and player.started:
@@ -26,10 +27,7 @@ func _process(delta):
 		# Update the Label text
 		if timer_label:
 			timer_label.text = time_string
-		else:
-			print("Can't access the TIME label")
-		print("Time: ", time_string)
-		
+
 func _restart():
 	time_elapsed = 0.0
 	player = $Spawner/Knight
