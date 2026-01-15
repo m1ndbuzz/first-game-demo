@@ -69,7 +69,7 @@ func _physics_process(delta: float) -> void:
 		if is_on_jumpable_wall and Input.is_action_just_pressed("jump"):
 			wall_jump(wall_normal)
 		
-		#Model rotation based on camera angle when there's movent
+		#Model rotation based on camera angle when there's movement
 		if velocity.length() > 1:
 			model.rotation.y = lerp_angle(model.rotation.y, spring_arm.rotation.y, rotation_speed * delta)
 		
@@ -175,14 +175,14 @@ func wall_jump(wall_normal):
 
 func wall_jump_check() -> Vector3:
 	for i in get_slide_collision_count():
-				var collision = get_slide_collision(i)
-				var collider = collision.get_collider()
-				if collider is StaticBody3D:
-					# Safely check for the property with a default value
-					var is_jumpable = collider.get("is_jumpable")
-					if is_jumpable == true:
-						is_on_jumpable_wall = true
-						return collision.get_normal()  # Store wall normal for jump direction
+		var collision = get_slide_collision(i)
+		var collider = collision.get_collider()
+		if collider is StaticBody3D:
+			# Safely check for the property with a default value
+			var is_jumpable = collider.get("is_jumpable")
+			if is_jumpable == true:
+				is_on_jumpable_wall = true
+				return collision.get_normal()  # Store wall normal for jump direction
 	return Vector3.ZERO
 	
 func get_move_input(delta: float) -> void:

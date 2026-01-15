@@ -9,8 +9,8 @@ size = Vector3(4.00269, 4, 1)
 [node name="JumpWall" type="StaticBody3D"]
 script = ExtResource("1_gxidr")
 
+[node name="wall2" parent="." instance=ExtResource("2_gxidr")]
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 shape = SubResource("BoxShape3D_gxidr")
-
-[node name="wall2" parent="." instance=ExtResource("2_gxidr")]
