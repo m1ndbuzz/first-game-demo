@@ -2,13 +2,13 @@
 
 [ext_resource type="PackedScene" uid="uid://cauepso73no8g" path="res://models/Assets/fbx/floor_dirt_small_A.fbx" id="1_gfry2"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_shwr7"]
-size = Vector3(2, 0.1, 2)
+[sub_resource type="BoxShape3D" id="BoxShape3D_ckg5c"]
+size = Vector3(1.99878, 0.119537, 1.99878)
 
 [node name="FloorDirtSmall" type="StaticBody3D"]
 
 [node name="floor_dirt_small_A" parent="." instance=ExtResource("1_gfry2")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03, 0)
-shape = SubResource("BoxShape3D_shwr7")
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00012207, -0.0401373, 0.000168949)
+shape = SubResource("BoxShape3D_ckg5c")
