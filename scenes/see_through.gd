@@ -46,7 +46,7 @@ func _physics_process(_delta):
 		var obj = raycast.get_collider()
 		if not affected_objects.has(obj):
 			print("Restoring2")
-			#_restore_materials()
+			_restore_materials()
 	else:
 		#clear
 		if not affected_objects.is_empty():
