@@ -2,7 +2,7 @@ extends Node
 
 const SAVE_PATH = "res://data/scores.json"
 const MAX_SCORES = 10
-const LABEL_PATH = "CanvasLayer/UI/ScoresLabel"
+const LABEL_PATH = "Canvas/UI/ScoresLabel"
 
 var label_ref: Label = null
 var scores: Array = []

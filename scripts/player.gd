@@ -40,7 +40,7 @@ var started = false
 # Variable to track time
 var time_elapsed = 0.0
 # Reference to the Label node
-@onready var timer_label = $"../../CanvasLayer/UI/TimeLabel"
+@onready var timer_label = $"../../Canvas/UI/TimeLabel"
 @onready var spring_arm = $SpringArm3D
 @onready var model = $Rig
 @onready var anim_tree = $AnimationTree
@@ -118,7 +118,7 @@ func handle_wall_jump_timer(delta: float):
 
 func handle_dash_timer(delta: float):
 	if dashing:
-		print("Dashing")
+		#print("Dashing")
 		dash_timer -= delta
 		if dash_timer <= 0:
 			dashing = false  # End dash
@@ -128,7 +128,7 @@ func handle_dash_timer(delta: float):
 			velocity.x = dash_direction.x * dash_speed
 			velocity.z = dash_direction.z * dash_speed
 	elif dash_cooldown_timer > 0:
-		print("Dash cooldown")
+		#print("Dash cooldown")
 		dash_cooldown_timer -= delta  # Reduce cooldown when not dashing
 
 func controller_camera_rotation(delta: float):

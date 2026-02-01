@@ -1683,16 +1683,16 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 45.5, 
 [node name="Exit  Wall" parent="Exit" instance=ExtResource("12_d13ii")]
 transform = Transform3D(3.9, 0, 0, 0, 3.9, 0, 0, 0, 3.9, 49.7, -2, 0)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Canvas" type="CanvasLayer" parent="."]
 
-[node name="UI" type="Control" parent="CanvasLayer"]
+[node name="UI" type="Control" parent="Canvas"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 146.0
 offset_bottom = 59.0
 theme = SubResource("Theme_6iypd")
 
-[node name="TimeLabel" type="Label" parent="CanvasLayer/UI"]
+[node name="TimeLabel" type="Label" parent="Canvas/UI"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.068
@@ -1707,15 +1707,30 @@ theme_override_colors/font_color = Color(0.956458, 0.962777, 1, 1)
 theme_override_font_sizes/font_size = 24
 text = "GO!"
 
-[node name="ScoresLabel" type="Label" parent="CanvasLayer/UI"]
+[node name="ScoresLabel" type="Label" parent="Canvas/UI"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 5.479
 anchor_top = 0.5
 anchor_right = 7.815
 anchor_bottom = 2.841
-offset_left = 0.065979
+offset_left = 164.066
 offset_top = -19.5
-offset_right = 0.0098877
-offset_bottom = 30.381
+offset_right = 0.0100098
+offset_bottom = -70.619
 horizontal_alignment = 2
+
+[node name="FPS" type="Label" parent="Canvas/UI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 6.89726
+anchor_top = 9.9661
+anchor_right = 7.89726
+anchor_bottom = 10.9661
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0.891002, 0, 1)
+theme_override_font_sizes/font_size = 40
+horizontal_alignment = 2
+vertical_alignment = 2
+metadata/_edit_use_anchors_ = true

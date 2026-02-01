@@ -2,6 +2,7 @@ extends Node3D
 # Variable to track time
 var time_elapsed = 0.0
 # Reference to the Label node
+var fps_counter
 var timer_label
 var player
 @export var time_string = ""
@@ -9,10 +10,11 @@ var player
 func _ready() -> void:
 	SignalManager.restart.connect(_restart)
 	player = $Spawner/Knight
-	timer_label = $CanvasLayer/UI/TimeLabel
+	timer_label = $Canvas/UI/TimeLabel
+	fps_counter = $Canvas/UI/FPS
 
 func _process(delta):
-	
+	fps_counter.text = str(Engine.get_frames_per_second())
 	if player and not player.finished and player.started:
 		# Update time
 		time_elapsed += delta
@@ -32,4 +34,5 @@ func _restart():
 	time_elapsed = 0.0
 	player = $Spawner/Knight
 	timer_label.text = "GO!"
+	
 	
