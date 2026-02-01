@@ -118,15 +118,17 @@ func handle_wall_jump_timer(delta: float):
 
 func handle_dash_timer(delta: float):
 	if dashing:
-			dash_timer -= delta
-			if dash_timer <= 0:
-				dashing = false  # End dash
-			else:
-				# Move forward during dash
-				var dash_speed = dash_distance / dash_duration  # Calculate speed to cover distance
-				velocity.x = dash_direction.x * dash_speed
-				velocity.z = dash_direction.z * dash_speed
-	else:
+		print("Dashing")
+		dash_timer -= delta
+		if dash_timer <= 0:
+			dashing = false  # End dash
+		else:
+			# Move forward during dash
+			var dash_speed = dash_distance / dash_duration  # Calculate speed to cover distance
+			velocity.x = dash_direction.x * dash_speed
+			velocity.z = dash_direction.z * dash_speed
+	elif dash_cooldown_timer > 0:
+		print("Dash cooldown")
 		dash_cooldown_timer -= delta  # Reduce cooldown when not dashing
 
 func controller_camera_rotation(delta: float):
