@@ -35,9 +35,9 @@ func _physics_process(_delta):
 		#make all the obje transperent
 		while raycast.is_colliding():
 			var obj = raycast.get_collider()
-			print("Hit an object: ",obj)
+			#print("Hit an object: ",obj)
 			if not affected_objects.has(obj):
-				print("New obj, making it transparent")
+				#print("New obj, making it transparent")
 				_apply_transparent_material(obj)
 				raycast.add_exception(obj)
 				raycast.force_raycast_update()
@@ -45,12 +45,12 @@ func _physics_process(_delta):
 		#check if the obj is in affected objs and if so do nothing
 		var obj = raycast.get_collider()
 		if not affected_objects.has(obj):
-			print("Restoring2")
+			#print("Restoring2")
 			_restore_materials()
 	else:
 		#clear
 		if not affected_objects.is_empty():
-			print("Restoring1")
+			#print("Restoring1")
 			_restore_materials()
 
 func _apply_transparent_material(obj: Node3D):

@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://c87nq8domswsw"]
+
+[ext_resource type="PackedScene" uid="uid://dwaruecshaqqb" path="res://models/Assets/my stuff/jump_pad.glb" id="1_t3ia3"]
+[ext_resource type="Script" uid="uid://ci8yvodjkuq08" path="res://scripts/jump_wall.gd" id="1_vuf52"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oh88q"]
+size = Vector3(4.00153, 0.48468, 3.98184)
+
+[node name="JumpWall2" type="StaticBody3D"]
+script = ExtResource("1_vuf52")
+
+[node name="jump_pad" parent="." instance=ExtResource("1_t3ia3")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.000640869, 0.00125122, 0.00205994)
+shape = SubResource("BoxShape3D_oh88q")

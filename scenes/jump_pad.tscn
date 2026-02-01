@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhi6kisqxnnjy"]
+
+[ext_resource type="PackedScene" uid="uid://d27k7vecydaqk" path="res://models/Assets/my stuff/pad.glb" id="1_rcmsn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_54nmu"]
+size = Vector3(4.00153, 0.48468, 3.98184)
+
+[node name="JumpPad" type="StaticBody3D"]
+
+[node name="pad" parent="." instance=ExtResource("1_rcmsn")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000640869, 0.00125122, 0.00205994)
+shape = SubResource("BoxShape3D_54nmu")
