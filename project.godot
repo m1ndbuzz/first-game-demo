@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="first-game-demo"
-run/main_scene="res://main.tscn"
+run/main_scene="uid://d3mv541ve4a23"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
