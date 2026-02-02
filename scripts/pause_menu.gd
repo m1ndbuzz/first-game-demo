@@ -14,7 +14,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		SignalManager.emit_signal("menu")
 		
 func menu_action():
-	print("GAME STATE: ", get_tree().paused)
+	#print("GAME STATE: ", get_tree().paused)
 	if get_tree().paused:
 		unpause()
 	else:
@@ -23,13 +23,13 @@ func menu_action():
 func unpause():
 	get_tree().paused = false
 	pause_menu.visible = false
-	print("unpaused")
+	#print("unpaused")
 	
 func pause():
 	get_tree().paused = true
 	pause_menu.visible = true
 	resume.grab_focus()
-	print("paused")
+	#print("paused")
 	
 
 
