@@ -23,13 +23,12 @@ func menu_action():
 func unpause():
 	get_tree().paused = false
 	pause_menu.visible = false
-	#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	print("unpaused")
 	
 func pause():
 	get_tree().paused = true
 	pause_menu.visible = true
-	#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	resume.grab_focus()
 	print("paused")
 	
 
