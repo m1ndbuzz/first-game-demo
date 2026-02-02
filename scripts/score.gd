@@ -10,7 +10,7 @@ var scores: Array = []
 
 func _ready():
 	# Defer node access until the scene tree is ready
-	call_deferred("load_scores")
+	#call_deferred("load_scores")
 	SignalManager.restart.connect(_on_scene_reloaded)
 	
 func add_score(score):
@@ -65,7 +65,6 @@ func _on_scene_reloaded():
 func refresh_label_reference():
 	var root = get_tree().current_scene
 	if root:
-		# Replace "Path/To/Your/Label" with the actual node path
 		label_ref = root.get_node_or_null(LABEL_PATH)
 		if label_ref:
 			print("Label reference obtained: ", label_ref.name)

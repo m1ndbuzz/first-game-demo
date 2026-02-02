@@ -12,6 +12,7 @@ func _ready() -> void:
 	player = $Spawner/Knight
 	timer_label = $Canvas/UI/TimeLabel
 	fps_counter = $Canvas/UI/FPS
+	SignalManager.restart.emit()
 
 func _process(delta):
 	fps_counter.text = str(Engine.get_frames_per_second())

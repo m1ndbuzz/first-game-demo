@@ -1718,6 +1718,7 @@ offset_left = 164.066
 offset_top = -19.5
 offset_right = 0.0100098
 offset_bottom = -70.619
+grow_horizontal = 0
 horizontal_alignment = 2
 
 [node name="FPS" type="Label" parent="Canvas/UI"]

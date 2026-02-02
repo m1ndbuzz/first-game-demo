@@ -230,11 +230,11 @@ func get_move_input(delta: float) -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	# Toggle mouse capture with Escape
 	if can_move:
-		if event.is_action_pressed("ui_cancel"):  # Escape key
-			if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
-				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-			else:
-				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		#if event.is_action_pressed("ui_cancel"):  # Escape key
+			#if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+				#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			#else:
+				#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		if event is InputEventMouseMotion:
 			spring_arm.rotation.x -= event.relative.y * mouse_sensitivity
 			spring_arm.rotation_degrees.x = clamp(spring_arm.rotation_degrees.x, -90.0, 30.0)
