@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://d3mv541ve4a23"]
 
-[ext_resource type="Script" uid="uid://bb3dkflt3oruj" path="res://scripts/menu.gd" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://bb3dkflt3oruj" path="res://scripts/main_menu.gd" id="1_ig7tw"]
 
 [node name="Node3D" type="Node3D"]
 
@@ -31,5 +31,8 @@ text = "Options"
 layout_mode = 2
 text = "Quit"
 
+[connection signal="mouse_entered" from="VBoxContainer/start_btn" to="VBoxContainer" method="_on_start_btn_mouse_entered"]
 [connection signal="pressed" from="VBoxContainer/start_btn" to="VBoxContainer" method="_on_start_btn_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/options_btn" to="VBoxContainer" method="_on_options_btn_mouse_entered"]
+[connection signal="mouse_entered" from="VBoxContainer/quit_btn" to="VBoxContainer" method="_on_quit_btn_mouse_entered"]
 [connection signal="pressed" from="VBoxContainer/quit_btn" to="VBoxContainer" method="_on_quit_btn_pressed"]

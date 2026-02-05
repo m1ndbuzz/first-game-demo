@@ -13,6 +13,9 @@ func _ready() -> void:
 	timer_label = $Canvas/UI/TimeLabel
 	fps_counter = $Canvas/UI/FPS
 	SignalManager.restart.emit()
+	if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
+		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+		
 
 func _process(delta):
 	fps_counter.text = str(Engine.get_frames_per_second())
