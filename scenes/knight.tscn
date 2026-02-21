@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dyvr6w33b33aj" path="res://models/Characters/gltf/Knight.glb" id="1_dp28g"]
 [ext_resource type="Script" uid="uid://cctp8kcp18pbe" path="res://scripts/player.gd" id="2_3i0j8"]
 [ext_resource type="Script" uid="uid://c4y48f5yupw3s" path="res://scripts/see_through.gd" id="3_qxgmm"]
-[ext_resource type="PackedScene" uid="uid://c864v3p1mn2q7" path="res://scenes/pause_menu.tscn" id="4_0dyjn"]
+[ext_resource type="PackedScene" uid="uid://c864v3p1mn2q7" path="res://scenes/menus/pause_menu.tscn" id="4_0dyjn"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3cm67"]
 animation = &"Cheer"

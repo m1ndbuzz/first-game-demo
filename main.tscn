@@ -1,10 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://d3mv541ve4a23"]
+[gd_scene load_steps=3 format=3 uid="uid://d3mv541ve4a23"]
 
 [ext_resource type="Script" uid="uid://bb3dkflt3oruj" path="res://scripts/main_menu.gd" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://nxm40rlh4f1k" path="res://scenes/menus/options_menu.tscn" id="2_0xm2m"]
 
 [node name="Node3D" type="Node3D"]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="Main_list" type="VBoxContainer" parent="."]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -19,20 +20,24 @@ grow_vertical = 2
 theme_override_constants/separation = 20
 script = ExtResource("1_ig7tw")
 
-[node name="start_btn" type="Button" parent="VBoxContainer"]
+[node name="start_btn" type="Button" parent="Main_list"]
 layout_mode = 2
 text = "Start"
 
-[node name="options_btn" type="Button" parent="VBoxContainer"]
+[node name="options_btn" type="Button" parent="Main_list"]
 layout_mode = 2
 text = "Options"
 
-[node name="quit_btn" type="Button" parent="VBoxContainer"]
+[node name="quit_btn" type="Button" parent="Main_list"]
 layout_mode = 2
 text = "Quit"
 
-[connection signal="mouse_entered" from="VBoxContainer/start_btn" to="VBoxContainer" method="_on_start_btn_mouse_entered"]
-[connection signal="pressed" from="VBoxContainer/start_btn" to="VBoxContainer" method="_on_start_btn_pressed"]
-[connection signal="mouse_entered" from="VBoxContainer/options_btn" to="VBoxContainer" method="_on_options_btn_mouse_entered"]
-[connection signal="mouse_entered" from="VBoxContainer/quit_btn" to="VBoxContainer" method="_on_quit_btn_mouse_entered"]
-[connection signal="pressed" from="VBoxContainer/quit_btn" to="VBoxContainer" method="_on_quit_btn_pressed"]
+[node name="OptionsMenu" parent="." instance=ExtResource("2_0xm2m")]
+visible = false
+
+[connection signal="mouse_entered" from="Main_list/start_btn" to="Main_list" method="_on_start_btn_mouse_entered"]
+[connection signal="pressed" from="Main_list/start_btn" to="Main_list" method="_on_start_btn_pressed"]
+[connection signal="mouse_entered" from="Main_list/options_btn" to="Main_list" method="_on_options_btn_mouse_entered"]
+[connection signal="pressed" from="Main_list/options_btn" to="Main_list" method="_on_options_btn_pressed"]
+[connection signal="mouse_entered" from="Main_list/quit_btn" to="Main_list" method="_on_quit_btn_mouse_entered"]
+[connection signal="pressed" from="Main_list/quit_btn" to="Main_list" method="_on_quit_btn_pressed"]
