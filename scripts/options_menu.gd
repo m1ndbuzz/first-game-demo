@@ -21,25 +21,24 @@ extends Control
 # Scroll container for auto-scrolling
 @onready var scroll_container = $VBoxContainer/TabContainer/Controls/VBoxContainer/ScrollContainer
 
-# Controller button names
+# Controller button names - USE ControllerDisplay AUTLOAD instead
+# ControllerDisplay has the correct platform-specific button mappings
+
+# Action-to-button-name mappings for the button preview section (Misc tab)
+# These map action names to their corresponding button names
 const XBOX_NAMES = {
 	"jump": "A",
 	"dash": "B",
 	"interact": "X",
-	"reset": "Y",
-	"view": "View"
+	"reset": "Y"
 }
 
 const PS_NAMES = {
 	"jump": "Cross",
 	"dash": "Circle",
 	"interact": "Square",
-	"reset": "Triangle",
-	"view": "Share"
+	"reset": "Triangle"
 }
-
-enum ControllerType { XBOX, PLAYSTATION }
-var current_controller_type: int = ControllerType.XBOX
 
 # Keybinding state
 var is_waiting_for_input: bool = false
@@ -47,6 +46,10 @@ var current_binding_action: String = ""
 var current_binding_type: String = ""
 var current_binding_button: Button = null
 var previous_binding_text: String = ""
+
+# Trigger detection threshold (triggers are analog, need threshold to detect "pressed")
+const TRIGGER_THRESHOLD: float = 0.5
+var trigger_pressed: bool = false
 
 signal back_pressed
 
@@ -295,10 +298,23 @@ func _input(event: InputEvent) -> void:
 				_accept_binding(event)
 				get_viewport().set_input_as_handled()
 				return
-			elif event is InputEventJoypadMotion and event.pressed:
-				_accept_binding(event)
-				get_viewport().set_input_as_handled()
-				return
+			elif event is InputEventJoypadMotion:
+				# Handle analog inputs (sticks and triggers)
+				# Triggers are axes 4 (LT/L2) and 5 (RT/R2) with values 0.0 to 1.0
+				# Sticks are axes 0-3 with values -1.0 to 1.0
+				if event.axis >= 4:
+					# Triggers - detect when value crosses threshold
+					if event.axis_value > TRIGGER_THRESHOLD and not trigger_pressed:
+						trigger_pressed = true
+						_accept_binding(event)
+						get_viewport().set_input_as_handled()
+						return
+				else:
+					# Analog sticks - detect significant movement (deadzone)
+					if abs(event.axis_value) > 0.5:
+						_accept_binding(event)
+						get_viewport().set_input_as_handled()
+						return
 
 func _accept_binding(event: InputEvent) -> void:
 	var existing_events = InputMap.action_get_events(current_binding_action)
@@ -344,6 +360,7 @@ func _accept_binding(event: InputEvent) -> void:
 	current_binding_action = ""
 	current_binding_type = ""
 	current_binding_button = null
+	trigger_pressed = false  # Reset trigger state
 	
 	_save_settings()
 
@@ -356,6 +373,7 @@ func _cancel_binding() -> void:
 	current_binding_type = ""
 	current_binding_button = null
 	previous_binding_text = ""
+	trigger_pressed = false  # Reset trigger state
 
 func _update_binding_button_text(action: String) -> void:
 	var _bindings_container = $VBoxContainer/TabContainer/Controls/VBoxContainer/ScrollContainer/BindingsList
@@ -382,35 +400,16 @@ func _update_binding_button_text(action: String) -> void:
 	ctrl_btn.text = ctrl_text
 
 func _get_controller_button_text(button_index: int) -> String:
-	# Return Xbox/PS label based on controller type
-	var names = XBOX_NAMES if current_controller_type == ControllerType.XBOX else PS_NAMES
-	
-	# Map button index to name
-	match button_index:
-		0: return names["jump"]  # A / Cross
-		1: return names["dash"]  # B / Circle
-		2: return names["interact"]  # X / Square
-		3: return names["reset"]  # Y / Triangle
-		4: return "LB" if current_controller_type == ControllerType.XBOX else "L1"
-		5: return "RB" if current_controller_type == ControllerType.XBOX else "R1"
-		6: return names["view"]  # View / Share
-		7: return "Menu"  # Start/Options button
-		8: return "L3"
-		9: return "R3"
-		_: return "Btn %d" % button_index
+	# Use ControllerDisplay autoload for correct button names
+	return ControllerDisplay.get_button_name(button_index)
 
 func _get_axis_text(axis: int, value: float) -> String:
-	match axis:
-		0: return "LS Right" if value > 0 else "LS Left"
-		1: return "LS Down" if value > 0 else "LS Up"
-		2: return "RS Right" if value > 0 else "RS Left"
-		3: return "RS Down" if value > 0 else "RS Up"
-		4: return "L2" if current_controller_type == ControllerType.PLAYSTATION else "LT"
-		5: return "R2" if current_controller_type == ControllerType.PLAYSTATION else "RT"
-	return ""
+	# Use ControllerDisplay autoload for correct axis names
+	return ControllerDisplay.get_axis_name(axis, value)
 
 func _update_controller_buttons() -> void:
-	var names = XBOX_NAMES if current_controller_type == ControllerType.XBOX else PS_NAMES
+	# Use local action-to-button-name mappings for the preview section
+	var names = XBOX_NAMES if ControllerDisplay.current_controller_type == ControllerDisplay.ControllerType.XBOX else PS_NAMES
 	
 	# Update preview labels in Misc tab
 	var preview_container = $VBoxContainer/TabContainer/Misc/VBoxContainer/ButtonPreview
@@ -512,7 +511,7 @@ func _setup_misc_tab_focus() -> void:
 	controller_type_option.focus_neighbor_bottom = back_btn.get_path()
 
 func _on_controller_type_changed(index: int) -> void:
-	current_controller_type = index
+	ControllerDisplay.set_controller_type(index)
 	_update_controller_buttons()
 	_save_settings()
 
@@ -618,7 +617,7 @@ func _save_settings() -> void:
 	config.set_value("audio", "sfx_volume", sfx_volume.value)
 	config.set_value("video", "fullscreen", fullscreen_checkbox.button_pressed)
 	config.set_value("video", "vsync", vsync_checkbox.button_pressed)
-	config.set_value("misc", "controller_type", current_controller_type)
+	config.set_value("misc", "controller_type", ControllerDisplay.current_controller_type)
 	
 	# Save keybindings
 	var actions = ["move_left", "move_right", "move_forward", "move_back", "jump", "dash", "interact", "Reset"]
@@ -643,8 +642,9 @@ func _load_settings() -> void:
 		vsync_checkbox.button_pressed = config.get_value("video", "vsync", true)
 		
 		# Misc - just Xbox or PlayStation toggle
-		current_controller_type = config.get_value("misc", "controller_type", ControllerType.XBOX)
-		controller_type_option.select(current_controller_type)
+		var loaded_type = config.get_value("misc", "controller_type", ControllerDisplay.ControllerType.XBOX)
+		ControllerDisplay.set_controller_type(loaded_type)
+		controller_type_option.select(ControllerDisplay.current_controller_type)
 		
 		# Load keybindings
 		if config.has_section("keybindings"):
@@ -664,7 +664,7 @@ func _load_settings() -> void:
 			sfx_volume.value = 80.0
 			fullscreen_checkbox.button_pressed = false
 			vsync_checkbox.button_pressed = true
-			current_controller_type = ControllerType.XBOX
+			ControllerDisplay.set_controller_type(ControllerDisplay.ControllerType.XBOX)
 			controller_type_option.select(0)
 	
 	# Update UI
