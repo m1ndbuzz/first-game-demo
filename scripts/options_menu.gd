@@ -454,8 +454,14 @@ func _on_tab_changed(tab: int) -> void:
 	# Give focus to first interactive element in the new tab
 	match tab:
 		0:  # Audio
+			_setup_audio_tab_focus()
+			# Set Back button's UP to point to last audio element
+			back_btn.focus_neighbor_top = sfx_volume.get_path()
 			master_volume.grab_focus()
 		1:  # Video
+			_setup_video_tab_focus()
+			# Set Back button's UP to point to last video element
+			back_btn.focus_neighbor_top = vsync_checkbox.get_path()
 			fullscreen_checkbox.grab_focus()
 		2:  # Controls
 			# Focus the first binding button (MoveLeft - KeyboardBtn)
@@ -466,7 +472,44 @@ func _on_tab_changed(tab: int) -> void:
 					first_row.get_node("KeyboardBtn").grab_focus()
 			scroll_container.scroll_vertical = 0  # Reset scroll to top
 		3:  # Misc
+			_setup_misc_tab_focus()
+			# Set Back button's UP to point to misc element
+			back_btn.focus_neighbor_top = controller_type_option.get_path()
 			controller_type_option.grab_focus()
+
+func _setup_audio_tab_focus() -> void:
+	# Prevent navigation up to tabs - first element's UP stays on self
+	master_volume.focus_neighbor_top = master_volume.get_path()
+	master_volume.focus_neighbor_left = master_volume.get_path()
+	master_volume.focus_neighbor_right = master_value.get_path()
+	
+	# Middle elements - prevent left/right from reaching tabs
+	music_volume.focus_neighbor_left = music_volume.get_path()
+	music_volume.focus_neighbor_right = music_value.get_path()
+	
+	sfx_volume.focus_neighbor_left = sfx_volume.get_path()
+	sfx_volume.focus_neighbor_right = sfx_value.get_path()
+	
+	# Last element's DOWN goes to Back button
+	sfx_volume.focus_neighbor_bottom = back_btn.get_path()
+
+func _setup_video_tab_focus() -> void:
+	# First element - UP stays on self, prevent left/right
+	fullscreen_checkbox.focus_neighbor_top = fullscreen_checkbox.get_path()
+	fullscreen_checkbox.focus_neighbor_left = fullscreen_checkbox.get_path()
+	fullscreen_checkbox.focus_neighbor_right = fullscreen_checkbox.get_path()
+	
+	# Last element - DOWN goes to Back button
+	vsync_checkbox.focus_neighbor_bottom = back_btn.get_path()
+	vsync_checkbox.focus_neighbor_left = vsync_checkbox.get_path()
+	vsync_checkbox.focus_neighbor_right = vsync_checkbox.get_path()
+
+func _setup_misc_tab_focus() -> void:
+	# Only one interactive element - lock all navigation to self except DOWN to Back
+	controller_type_option.focus_neighbor_top = controller_type_option.get_path()
+	controller_type_option.focus_neighbor_left = controller_type_option.get_path()
+	controller_type_option.focus_neighbor_right = controller_type_option.get_path()
+	controller_type_option.focus_neighbor_bottom = back_btn.get_path()
 
 func _on_controller_type_changed(index: int) -> void:
 	current_controller_type = index
@@ -632,4 +675,9 @@ func _load_settings() -> void:
 
 func show_menu() -> void:
 	show()
-	back_btn.grab_focus.call_deferred()
+	# Set to Audio tab first and focus the first element
+	tab_container.current_tab = 0
+	_enable_tab_focus(0)
+	_setup_audio_tab_focus()
+	back_btn.focus_neighbor_top = sfx_volume.get_path()
+	master_volume.grab_focus.call_deferred()
