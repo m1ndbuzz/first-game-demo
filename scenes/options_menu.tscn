@@ -1,0 +1,421 @@
+[gd_scene load_steps=2 format=3 uid="uid://ckptj1m4fhf3w"]
+
+[ext_resource type="Script" uid="uid://tq7x1hu3hm5p" path="res://scripts/options_menu.gd" id="1_abc123"]
+
+[node name="OptionsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_abc123")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = -250.0
+offset_right = 350.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Options"
+horizontal_alignment = 1
+
+[node name="TabContainer" type="TabContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+tab_alignment = 1
+current_tab = 0
+
+[node name="Audio" type="MarginContainer" parent="VBoxContainer/TabContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+metadata/_tab_index = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/TabContainer/Audio"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="MasterRow" type="HBoxContainer" parent="VBoxContainer/TabContainer/Audio/VBoxContainer"]
+layout_mode = 2
+
+[node name="MasterLabel" type="Label" parent="VBoxContainer/TabContainer/Audio/VBoxContainer/MasterRow"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "Master"
+
+[node name="MasterVolume" type="HSlider" parent="VBoxContainer/TabContainer/Audio/VBoxContainer/MasterRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+value = 80.0
+
+[node name="MasterValue" type="Label" parent="VBoxContainer/TabContainer/Audio/VBoxContainer/MasterRow"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "80%"
+horizontal_alignment = 1
+
+[node name="MusicRow" type="HBoxContainer" parent="VBoxContainer/TabContainer/Audio/VBoxContainer"]
+layout_mode = 2
+
+[node name="MusicLabel" type="Label" parent="VBoxContainer/TabContainer/Audio/VBoxContainer/MusicRow"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "Music"
+
+[node name="MusicVolume" type="HSlider" parent="VBoxContainer/TabContainer/Audio/VBoxContainer/MusicRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+value = 80.0
+
+[node name="MusicValue" type="Label" parent="VBoxContainer/TabContainer/Audio/VBoxContainer/MusicRow"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "80%"
+horizontal_alignment = 1
+
+[node name="SFXRow" type="HBoxContainer" parent="VBoxContainer/TabContainer/Audio/VBoxContainer"]
+layout_mode = 2
+
+[node name="SFXLabel" type="Label" parent="VBoxContainer/TabContainer/Audio/VBoxContainer/SFXRow"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "SFX"
+
+[node name="SFXVolume" type="HSlider" parent="VBoxContainer/TabContainer/Audio/VBoxContainer/SFXRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+value = 80.0
+
+[node name="SFXValue" type="Label" parent="VBoxContainer/TabContainer/Audio/VBoxContainer/SFXRow"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "80%"
+horizontal_alignment = 1
+
+[node name="Video" type="MarginContainer" parent="VBoxContainer/TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+metadata/_tab_index = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/TabContainer/Video"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="FullscreenCheck" type="CheckBox" parent="VBoxContainer/TabContainer/Video/VBoxContainer"]
+layout_mode = 2
+text = "Fullscreen"
+
+[node name="VSyncCheck" type="CheckBox" parent="VBoxContainer/TabContainer/Video/VBoxContainer"]
+layout_mode = 2
+button_pressed = true
+text = "VSync"
+
+[node name="Controls" type="MarginContainer" parent="VBoxContainer/TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+metadata/_tab_index = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/TabContainer/Controls"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ControlsLabel" type="Label" parent="VBoxContainer/TabContainer/Controls/VBoxContainer"]
+layout_mode = 2
+text = "Controls"
+horizontal_alignment = 1
+
+[node name="ResetDefaultsBtn" type="Button" parent="VBoxContainer/TabContainer/Controls/VBoxContainer"]
+layout_mode = 2
+text = "Reset All to Defaults"
+
+[node name="HSeparator3" type="HSeparator" parent="VBoxContainer/TabContainer/Controls/VBoxContainer"]
+layout_mode = 2
+
+[node name="HeaderRow" type="HBoxContainer" parent="VBoxContainer/TabContainer/Controls/VBoxContainer"]
+layout_mode = 2
+
+[node name="ActionLabel" type="Label" parent="VBoxContainer/TabContainer/Controls/VBoxContainer/HeaderRow"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "Action"
+horizontal_alignment = 1
+
+[node name="KeyboardLabel" type="Label" parent="VBoxContainer/TabContainer/Controls/VBoxContainer/HeaderRow"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Keyboard/Mouse"
+horizontal_alignment = 1
+
+[node name="ControllerLabel" type="Label" parent="VBoxContainer/TabContainer/Controls/VBoxContainer/HeaderRow"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Controller"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/TabContainer/Controls/VBoxContainer"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/TabContainer/Controls/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="BindingsList" type="VBoxContainer" parent="VBoxContainer/TabContainer/Controls/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 5
+
+[node name="MoveLeft" type="HBoxContainer" parent="VBoxContainer/TabContainer/Controls/VBoxContainer/ScrollContainer/BindingsList"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/TabContainer/Controls/VBoxContainer/ScrollContainer/BindingsList/MoveLeft"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "Move Left"
+
+[node name="KeyboardBtn" type="Button" parent="VBoxContainer/TabContainer/Controls/VBoxContainer/ScrollContainer/BindingsList/MoveLeft"]
+custom_minimum_size = Vector2(120, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "A"
+
+[node name="ControllerBtn" type="Button" parent="VBoxContainer/TabContainer/Controls/VBoxContainer/ScrollContainer/BindingsList/MoveLeft"]
+custom_minimum_size = Vector2(120, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Left Stick"
+
+[node name="MoveRight" type="HBoxContainer" parent="VBoxContainer/TabContainer/Controls/VBoxContainer/ScrollContainer/BindingsList"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/TabContainer/Controls/VBoxContainer/ScrollContainer/BindingsList/MoveRight"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "Move Right"
+
+[node name="KeyboardBtn" type="Button" parent="VBoxContainer/TabContainer/Controls/VBoxContainer/ScrollContainer/BindingsList/MoveRight"]
+custom_minimum_size = Vector2(120, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "D"
+
+[node name="ControllerBtn" type="Button" parent="VBoxContainer/TabContainer/Controls/VBoxContainer/ScrollContainer/BindingsList/MoveRight"]
+custom_minimum_size = Vector2(120, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Left Stick"
+
+[node name="MoveForward" type="HBoxContainer" parent="VBoxContainer/TabContainer/Controls/VBoxContainer/ScrollContainer/BindingsList"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/TabContainer/Controls/VBoxContainer/ScrollContainer/BindingsList/MoveForward"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "Move Forward"
+
+[node name="KeyboardBtn" type="Button" parent="VBoxContainer/TabContainer/Controls/VBoxContainer/ScrollContainer/BindingsList/MoveForward"]
+custom_minimum_size = Vector2(120, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "W"
+
+[node name="ControllerBtn" type="Button" parent="VBoxContainer/TabContainer/Controls/VBoxContainer/ScrollContainer/BindingsList/MoveForward"]
+custom_minimum_size = Vector2(120, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Left Stick"
+
+[node name="MoveBack" type="HBoxContainer" parent="VBoxContainer/TabContainer/Controls/VBoxContainer/ScrollContainer/BindingsList"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/TabContainer/Controls/VBoxContainer/ScrollContainer/BindingsList/MoveBack"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "Move Back"
+
+[node name="KeyboardBtn" type="Button" parent="VBoxContainer/TabContainer/Controls/VBoxContainer/ScrollContainer/BindingsList/MoveBack"]
+custom_minimum_size = Vector2(120, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "S"
+
+[node name="ControllerBtn" type="Button" parent="VBoxContainer/TabContainer/Controls/VBoxContainer/ScrollContainer/BindingsList/MoveBack"]
+custom_minimum_size = Vector2(120, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Left Stick"
+
+[node name="Jump" type="HBoxContainer" parent="VBoxContainer/TabContainer/Controls/VBoxContainer/ScrollContainer/BindingsList"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/TabContainer/Controls/VBoxContainer/ScrollContainer/BindingsList/Jump"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "Jump"
+
+[node name="KeyboardBtn" type="Button" parent="VBoxContainer/TabContainer/Controls/VBoxContainer/ScrollContainer/BindingsList/Jump"]
+custom_minimum_size = Vector2(120, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Space"
+
+[node name="ControllerBtn" type="Button" parent="VBoxContainer/TabContainer/Controls/VBoxContainer/ScrollContainer/BindingsList/Jump"]
+custom_minimum_size = Vector2(120, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "A"
+
+[node name="Dash" type="HBoxContainer" parent="VBoxContainer/TabContainer/Controls/VBoxContainer/ScrollContainer/BindingsList"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/TabContainer/Controls/VBoxContainer/ScrollContainer/BindingsList/Dash"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "Dash"
+
+[node name="KeyboardBtn" type="Button" parent="VBoxContainer/TabContainer/Controls/VBoxContainer/ScrollContainer/BindingsList/Dash"]
+custom_minimum_size = Vector2(120, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Shift"
+
+[node name="ControllerBtn" type="Button" parent="VBoxContainer/TabContainer/Controls/VBoxContainer/ScrollContainer/BindingsList/Dash"]
+custom_minimum_size = Vector2(120, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "B"
+
+[node name="Interact" type="HBoxContainer" parent="VBoxContainer/TabContainer/Controls/VBoxContainer/ScrollContainer/BindingsList"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/TabContainer/Controls/VBoxContainer/ScrollContainer/BindingsList/Interact"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "Interact"
+
+[node name="KeyboardBtn" type="Button" parent="VBoxContainer/TabContainer/Controls/VBoxContainer/ScrollContainer/BindingsList/Interact"]
+custom_minimum_size = Vector2(120, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "E"
+
+[node name="ControllerBtn" type="Button" parent="VBoxContainer/TabContainer/Controls/VBoxContainer/ScrollContainer/BindingsList/Interact"]
+custom_minimum_size = Vector2(120, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "X"
+
+[node name="Reset" type="HBoxContainer" parent="VBoxContainer/TabContainer/Controls/VBoxContainer/ScrollContainer/BindingsList"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/TabContainer/Controls/VBoxContainer/ScrollContainer/BindingsList/Reset"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "Reset"
+
+[node name="KeyboardBtn" type="Button" parent="VBoxContainer/TabContainer/Controls/VBoxContainer/ScrollContainer/BindingsList/Reset"]
+custom_minimum_size = Vector2(120, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "R"
+
+[node name="ControllerBtn" type="Button" parent="VBoxContainer/TabContainer/Controls/VBoxContainer/ScrollContainer/BindingsList/Reset"]
+custom_minimum_size = Vector2(120, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Y"
+
+[node name="Misc" type="MarginContainer" parent="VBoxContainer/TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+metadata/_tab_index = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/TabContainer/Misc"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="MiscLabel" type="Label" parent="VBoxContainer/TabContainer/Misc/VBoxContainer"]
+layout_mode = 2
+text = "Miscellaneous"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/TabContainer/Misc/VBoxContainer"]
+layout_mode = 2
+
+[node name="ControllerTypeLabel" type="Label" parent="VBoxContainer/TabContainer/Misc/VBoxContainer"]
+layout_mode = 2
+text = "Controller Button Labels"
+
+[node name="ControllerTypeOption" type="OptionButton" parent="VBoxContainer/TabContainer/Misc/VBoxContainer"]
+layout_mode = 2
+selected = 0
+item_count = 2
+popup/item_0/text = "Xbox"
+popup/item_0/id = 0
+popup/item_1/text = "PlayStation"
+popup/item_1/id = 1
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer/TabContainer/Misc/VBoxContainer"]
+layout_mode = 2
+
+[node name="ControllerDisplayLabel" type="Label" parent="VBoxContainer/TabContainer/Misc/VBoxContainer"]
+layout_mode = 2
+text = "Button Preview:"
+
+[node name="ButtonPreview" type="HBoxContainer" parent="VBoxContainer/TabContainer/Misc/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="ABtn" type="Label" parent="VBoxContainer/TabContainer/Misc/VBoxContainer/ButtonPreview"]
+layout_mode = 2
+text = "A"
+horizontal_alignment = 1
+
+[node name="BBtn" type="Label" parent="VBoxContainer/TabContainer/Misc/VBoxContainer/ButtonPreview"]
+layout_mode = 2
+text = "B"
+horizontal_alignment = 1
+
+[node name="XBtn" type="Label" parent="VBoxContainer/TabContainer/Misc/VBoxContainer/ButtonPreview"]
+layout_mode = 2
+text = "X"
+horizontal_alignment = 1
+
+[node name="YBtn" type="Label" parent="VBoxContainer/TabContainer/Misc/VBoxContainer/ButtonPreview"]
+layout_mode = 2
+text = "Y"
+horizontal_alignment = 1
+
+[node name="BackBtn" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Back"
+
+[connection signal="pressed" from="VBoxContainer/TabContainer/Controls/VBoxContainer/ResetDefaultsBtn" to="." method="_on_reset_defaults_pressed"]
+[connection signal="pressed" from="VBoxContainer/BackBtn" to="." method="_on_back_btn_pressed"]
